@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C721248018BE0315000E20A7 /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C721247F18BE0315000E20A7 /* OrderedDictionary.m */; };
 		C733E0E118556E65009C8A55 /* UVwebSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C733E0E018556E65009C8A55 /* UVwebSessionManager.m */; };
-		C7787E5C18B5580F00241884 /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C7787E5B18B5580F00241884 /* OrderedDictionary.m */; };
 		C78E1A331854EAF8003B00CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78E1A321854EAF8003B00CE /* Foundation.framework */; };
 		C78E1A351854EAF8003B00CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78E1A341854EAF8003B00CE /* CoreGraphics.framework */; };
 		C78E1A371854EAF8003B00CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78E1A361854EAF8003B00CE /* UIKit.framework */; };
@@ -37,10 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C721247E18BE0315000E20A7 /* OrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderedDictionary.h; sourceTree = "<group>"; };
+		C721247F18BE0315000E20A7 /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderedDictionary.m; sourceTree = "<group>"; };
 		C733E0DF18556E65009C8A55 /* UVwebSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UVwebSessionManager.h; sourceTree = "<group>"; };
 		C733E0E018556E65009C8A55 /* UVwebSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UVwebSessionManager.m; sourceTree = "<group>"; };
-		C7787E5A18B5580F00241884 /* OrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderedDictionary.h; path = "../../../Classes externes/OrderedDictionary/OrderedDictionary.h"; sourceTree = "<group>"; };
-		C7787E5B18B5580F00241884 /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderedDictionary.m; path = "../../../Classes externes/OrderedDictionary/OrderedDictionary.m"; sourceTree = "<group>"; };
 		C78E1A2F1854EAF8003B00CE /* UVweb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UVweb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78E1A321854EAF8003B00CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C78E1A341854EAF8003B00CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -121,8 +121,8 @@
 		C78E1A381854EAF8003B00CE /* UVweb */ = {
 			isa = PBXGroup;
 			children = (
-				C7787E5A18B5580F00241884 /* OrderedDictionary.h */,
-				C7787E5B18B5580F00241884 /* OrderedDictionary.m */,
+				C721247E18BE0315000E20A7 /* OrderedDictionary.h */,
+				C721247F18BE0315000E20A7 /* OrderedDictionary.m */,
 				C78E1A411854EAF8003B00CE /* AppDelegate.h */,
 				C78E1A421854EAF8003B00CE /* AppDelegate.m */,
 				C78E1A611854EFBA003B00CE /* Storyboard.storyboard */,
@@ -266,8 +266,8 @@
 				C7F83DFB18969B9B00B0A7B0 /* Uv.m in Sources */,
 				C733E0E118556E65009C8A55 /* UVwebSessionManager.m in Sources */,
 				C7F83DF818969A2000B0A7B0 /* UvsViewController.m in Sources */,
+				C721248018BE0315000E20A7 /* OrderedDictionary.m in Sources */,
 				C78E1A431854EAF8003B00CE /* AppDelegate.m in Sources */,
-				C7787E5C18B5580F00241884 /* OrderedDictionary.m in Sources */,
 				C78E1A3F1854EAF8003B00CE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
