@@ -32,7 +32,7 @@
     return self;
 }
 
-- (void) getAllUvsAndRefreshTable:(NSMutableArray*)uvs table:(UITableView*)table uvss:(OrderedDictionary*)uvss
+- (void) getAllUvsAndRefreshTable:(UITableView*)table uvs:(OrderedDictionary*)uvs
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
@@ -61,26 +61,20 @@
                                                             
                                                             for (NSDictionary *groupLetter in uvsFound) {
                                                                 
-                                                                [uvss setValue:[[NSMutableArray alloc] init] forKey:(NSString *)groupLetter];
+                                                                [uvs setValue:[[NSMutableArray alloc] init] forKey:(NSString *)groupLetter];
                                                                 
                                                                 NSDictionary *groupedUvs = uvsFound[groupLetter];
                                                                 for (NSDictionary *uv in groupedUvs) {
+                                                                    
                                                                     Uv* newUv = [[Uv alloc] initWithJSONData:uv];
-                                                                  //  NSLog(@"UV: %@", uv[@"name"]);
                                                                     NSLog(@"UV: %@", [newUv name]);
                                                                     
-                                                                    [[uvss objectForKey:groupLetter] addObject:newUv];
-                                                                    
-                                                                    [uvs addObject:newUv];
+                                                                    [[uvs objectForKey:groupLetter] addObject:newUv];
                                                                 }
                                                             }
-                                                            [uvss sortKeysUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-
-                                                            //Sorting the UVs
-                                                            [uvs sortUsingComparator:
-                                                             ^NSComparisonResult(id uv1, id uv2) {
-                                                                 return [((Uv*)uv1).name compare:((Uv*)uv2).name];
-                                                             }];
+                                                            
+                                                            //Need to sort the NSMutableDictionary keys as they were not ordered in the JSON
+                                                            [uvs sortKeysUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
                                                             
                                                             dispatch_async(dispatch_get_main_queue(), ^{
                                                                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;

@@ -47,13 +47,9 @@
 {
     _session = [[UVwebSessionManager alloc] initWithBaseurl:@""];
     
-    _uvs = [[NSMutableArray alloc] init];
-
-    _uvss = [[NSMutableDictionary alloc] init];
     _orderedUVs = [[OrderedDictionary alloc] init];
     
- //   [_session getAllUvsAndRefreshTable:_uvs table:self.tableView uvss:_uvss];
-    [_session getAllUvsAndRefreshTable:_uvs table:self.tableView uvss:_orderedUVs];
+    [_session getAllUvsAndRefreshTable:self.tableView uvs:_orderedUVs];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,20 +58,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-/*
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    return _uvs.count;
-}
-*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"UvCell";
@@ -86,11 +68,7 @@
         cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     else
         cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    
-//    Uv *uv = _uvs[indexPath.row];
-    
- //   Uv *uv = [[_uvss valueForKey:[[[_uvss allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
-//    Uv *uv = [[_orderedUVs valueForKey:[[[_orderedUVs allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+
     Uv* uv = nil;
     
     if(tableView == self.searchDisplayController.searchResultsTableView)
@@ -106,7 +84,6 @@
     
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:102];
     titleLabel.text = uv.title;
-    //    commentCountLabel.text = [uv.commentCount stringValue];
     
     return cell;
 }
@@ -121,24 +98,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // return [[_orderedUVs valueForKey:[[[_orderedUVs allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:section]] count];
     if(tableView == self.searchDisplayController.searchResultsTableView)
         return [[_filteredUVs valueForKey:[_filteredUVs keyAtIndex:section]] count];
     else
         return [[_orderedUVs valueForKey:[_orderedUVs keyAtIndex:section]] count];
 }
-
-/*
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return [[[_uvss allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:section];
-}
-*/
  
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-//    return [[_orderedUVs allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    
     if(tableView == self.searchDisplayController.searchResultsTableView)
         return [_filteredUVs allKeysSorted];
     else
@@ -152,8 +119,6 @@
     UITableViewCell* headerCell = [self.tableView dequeueReusableCellWithIdentifier:headerCellIdentifier];
     
     UILabel *letterLabel = (UILabel *)[headerCell viewWithTag:100];
-    
-//    letterLabel.text = [[[_orderedUVs allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:section];
     
     if(tableView == self.searchDisplayController.searchResultsTableView)
         letterLabel.text = [_filteredUVs keyAtIndex:section];
@@ -183,8 +148,6 @@
             [_filteredUVs setObject:sortedArr forKey:uvLetter];
         }
     }
-    
-  //  _filteredUVs = [OrderedDictionary dictionaryWithDictionary: _orderedUVs];
 }
 
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
@@ -204,30 +167,6 @@
 }
 
 /*
- 
- _________________________
- - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
- {
-    return [[_uvss allKeys] count];
- }
- 
- - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
- {
- return [[_uvss valueForKey:[[[_uvss allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:section]] count];
- }
-
- - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
- {
- return [[[_uvss allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:section];
- }
- 
- - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
- {
- return [[_uvss allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
- }
-
-____________________
- 
  
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

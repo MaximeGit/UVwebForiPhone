@@ -11,8 +11,6 @@
 
 @interface UvsViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
 
-@property (nonatomic, strong) NSMutableArray *uvs;
-@property (nonatomic, strong) NSMutableDictionary *uvss;
 @property (nonatomic, strong) OrderedDictionary *orderedUVs;
 @property (nonatomic, strong) OrderedDictionary *filteredUVs;
 @property IBOutlet UISearchBar *uvSearchBar;
