@@ -15,4 +15,6 @@
 @property (nonatomic, strong) OrderedDictionary *filteredUVs;
 @property IBOutlet UISearchBar *uvSearchBar;
 
+-(IBAction)startSearch:(id)sender;
+
 @end

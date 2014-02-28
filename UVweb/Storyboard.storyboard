@@ -34,11 +34,8 @@
                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Entrez un nom d'UV" showsBookmarkButton="YES" id="G3v-J9-yao">
                             <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="barTintColor" red="0.44705882668495178" green="0.73333334922790527" blue="0.66666668653488159" alpha="1" colorSpace="calibratedRGB"/>
                             <textInputTraits key="textInputTraits"/>
-                            <scopeButtonTitles>
-                                <string>Title</string>
-                                <string>Title</string>
-                            </scopeButtonTitles>
                             <connections>
                                 <outlet property="delegate" destination="wg6-fx-knY" id="r3c-xk-Frl"/>
                             </connections>
@@ -118,6 +115,9 @@
                                         <constraint firstAttribute="trailing" secondItem="TOx-08-do4" secondAttribute="trailing" constant="20" id="yFa-Pc-RFX"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="2vz-LQ-GJx" kind="push" identifier="uvDetail" id="Crm-8g-fu5"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell autoresizesSubviews="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UvLetterHeaderCell" id="BbU-9j-mIz">
                                 <rect key="frame" x="0.0" y="290" width="320" height="80"/>
@@ -148,7 +148,13 @@
                             <outlet property="delegate" destination="wg6-fx-knY" id="ofn-7M-m0i"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Derniers avis - News" id="gB6-I0-nIh"/>
+                    <navigationItem key="navigationItem" title="Derniers avis - News" id="gB6-I0-nIh">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="lta-Ea-65g">
+                            <connections>
+                                <action selector="startSearch:" destination="wg6-fx-knY" id="1q7-1p-oFC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="TEP-d3-ibX" id="nRE-sb-YUP"/>
                         <outlet property="uvSearchBar" destination="G3v-J9-yao" id="SOT-9x-voe"/>
@@ -165,7 +171,26 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1835" y="-283"/>
+            <point key="canvasLocation" x="1864" y="-276"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fmn-89-OYK">
+            <objects>
+                <viewController id="2vz-LQ-GJx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vaf-d7-80x"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lyl-6d-8iw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HJB-Vw-4hl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AWM-5l-jsc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t9e-WL-aGd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2497" y="-276"/>
         </scene>
         <!--View Controller - Liste UVs-->
         <scene sceneID="6ZN-21-hgD">

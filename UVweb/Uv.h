@@ -16,7 +16,8 @@
 @property (nonatomic, strong, readonly) NSNumber *commentCount;
 //@property (nonatomic, assign, readonly) int commentCount;
 
--(id) initWithJSONData:(NSDictionary*)UvJSON;
--(NSString*) getFormattedGlobalRate;
+-(id)initWithJSONData:(NSDictionary *)UvJSON;
+-(NSString *)getFormattedGlobalRate;
+-(NSMutableAttributedString *)attributeStringForName;
 
 @end

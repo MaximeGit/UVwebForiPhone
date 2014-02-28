@@ -37,6 +37,11 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    CGRect newBounds = self.tableView.bounds;
+    newBounds.origin.y = newBounds.origin.y + _uvSearchBar.bounds.size.height;
+    self.tableView.bounds = newBounds;
+
+    
     _filteredUVs = [[OrderedDictionary alloc] init];
     [self.searchDisplayController.searchResultsTableView setRowHeight:self.tableView.rowHeight];
 
@@ -77,7 +82,8 @@
         uv = [[_orderedUVs objectForKey:[_orderedUVs keyAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:100];
-    nameLabel.text = uv.name;
+ //   nameLabel.text = uv.name;
+    nameLabel.attributedText = [uv attributeStringForName];
     
     UILabel *globalRateLabel = (UILabel *)[cell viewWithTag:101];
     globalRateLabel.text = [uv getFormattedGlobalRate];
@@ -133,8 +139,8 @@
     return 30.0;
 }
 
--(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
-    
+-(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
     [_filteredUVs removeAllObjects];
     
     // Filter the array using NSPredicate
@@ -150,20 +156,69 @@
     }
 }
 
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
     // Tells the table data source to reload when text changes
     [self filterContentForSearchText:searchString scope:
      [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    
     // Return YES to cause the search result table view to be reloaded.
     return YES;
 }
 
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
-    // Tells the table data source to reload when scope bar selection changes
-    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
-     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
+/*
+ * Starts the search option in the list
+ */
+-(IBAction)startSearch:(id)sender
+{
+    [_uvSearchBar becomeFirstResponder];
+}
+
+/*
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"uvDetail"])
+    {
+        UIViewController *uvDetailViewController = [segue destinationViewController];
+        
+        //We need to know which table is used
+        if(sender == self.searchDisplayController.searchResultsTableView)
+        {
+            NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+            NSString *destinationTitle = [[[_filteredUVs objectForKey:[_filteredUVs keyAtIndex:indexPath.section]] objectAtIndex:indexPath.row] name];
+            [uvDetailViewController setTitle:destinationTitle];
+        }
+        else
+        {
+            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+            NSString *destinationTitle = [[[_orderedUVs objectForKey:[_orderedUVs keyAtIndex:indexPath.section]] objectAtIndex:indexPath.row] name];
+            [uvDetailViewController setTitle:destinationTitle];
+        }
+    }
+}
+*/
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"uvDetail"])
+    {
+        // Sender is the table view cell.
+        OrderedDictionary *sourceDictionary;
+        
+        NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForCell:(UITableViewCell *)sender];
+        if (indexPath != nil)
+        {
+            sourceDictionary = _filteredUVs;
+        }
+        else
+        {
+            indexPath = [self.tableView indexPathForCell:(UITableViewCell *)sender];
+            sourceDictionary = _orderedUVs;
+        }
+        
+        UIViewController *destinationController = segue.destinationViewController;
+        NSString *destinationTitle = [[[sourceDictionary objectForKey:[sourceDictionary keyAtIndex:indexPath.section]] objectAtIndex:indexPath.row] name];
+        destinationController.title = destinationTitle;
+    }
 }
 
 /*

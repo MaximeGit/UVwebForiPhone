@@ -15,6 +15,6 @@
 @property(nonatomic, weak) NSURLSession *session;
 
 - (id)initWithBaseurl:(NSString *) baseUrl;
-- (void) getAllUvsAndRefreshTable:(UITableView*)table uvs:(OrderedDictionary*)uvs;
+- (void)getAllUvsAndRefreshTable:(UITableView*)table uvs:(OrderedDictionary*)uvs;
 
 @end

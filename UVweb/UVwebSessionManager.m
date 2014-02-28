@@ -32,7 +32,7 @@
     return self;
 }
 
-- (void) getAllUvsAndRefreshTable:(UITableView*)table uvs:(OrderedDictionary*)uvs
+- (void)getAllUvsAndRefreshTable:(UITableView*)table uvs:(OrderedDictionary*)uvs
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
