@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C721248018BE0315000E20A7 /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C721247F18BE0315000E20A7 /* OrderedDictionary.m */; };
-		C733E0E118556E65009C8A55 /* UVwebSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C733E0E018556E65009C8A55 /* UVwebSessionManager.m */; };
+		C72D128F1920C6AF00380CE6 /* RecentActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C72D128E1920C6AF00380CE6 /* RecentActivityViewController.m */; };
+		C72D12951920D13F00380CE6 /* RecentComment.m in Sources */ = {isa = PBXBuildFile; fileRef = C72D12941920D13F00380CE6 /* RecentComment.m */; };
+		C72D12971920F58900380CE6 /* UVwebSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C72D12961920F58900380CE6 /* UVwebSessionManager.m */; };
 		C73B884518D9A1D30074E94D /* UvCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C73B884418D9A1D30074E94D /* UvCommentCell.m */; };
 		C73B884818D9AF360074E94D /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = C73B884718D9AF360074E94D /* Comment.m */; };
 		C78E1A331854EAF8003B00CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78E1A321854EAF8003B00CE /* Foundation.framework */; };
@@ -44,8 +46,12 @@
 /* Begin PBXFileReference section */
 		C721247E18BE0315000E20A7 /* OrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderedDictionary.h; sourceTree = "<group>"; };
 		C721247F18BE0315000E20A7 /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderedDictionary.m; sourceTree = "<group>"; };
+		C72D128D1920C6AF00380CE6 /* RecentActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentActivityViewController.h; sourceTree = "<group>"; };
+		C72D128E1920C6AF00380CE6 /* RecentActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentActivityViewController.m; sourceTree = "<group>"; };
+		C72D12931920D13F00380CE6 /* RecentComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentComment.h; sourceTree = "<group>"; };
+		C72D12941920D13F00380CE6 /* RecentComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentComment.m; sourceTree = "<group>"; };
+		C72D12961920F58900380CE6 /* UVwebSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UVwebSessionManager.m; sourceTree = "<group>"; };
 		C733E0DF18556E65009C8A55 /* UVwebSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UVwebSessionManager.h; sourceTree = "<group>"; };
-		C733E0E018556E65009C8A55 /* UVwebSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UVwebSessionManager.m; sourceTree = "<group>"; };
 		C73B884318D9A1D30074E94D /* UvCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UvCommentCell.h; sourceTree = "<group>"; };
 		C73B884418D9A1D30074E94D /* UvCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UvCommentCell.m; sourceTree = "<group>"; };
 		C73B884618D9AF360074E94D /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
@@ -103,11 +109,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C73B884918D9E4C80074E94D /* iPad */ = {
+		C72D12901920CDEC00380CE6 /* PrototypeCells */ = {
 			isa = PBXGroup;
 			children = (
+				C73B884318D9A1D30074E94D /* UvCommentCell.h */,
+				C73B884418D9A1D30074E94D /* UvCommentCell.m */,
+				C7F6F07118D8BB3200DDDF84 /* UvTitleCell.h */,
+				C7F6F07218D8BB3200DDDF84 /* UvTitleCell.m */,
 			);
-			name = iPad;
+			name = PrototypeCells;
+			sourceTree = "<group>";
+		};
+		C72D12911920CEB700380CE6 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C721247E18BE0315000E20A7 /* OrderedDictionary.h */,
+				C721247F18BE0315000E20A7 /* OrderedDictionary.m */,
+				C73B884618D9AF360074E94D /* Comment.h */,
+				C73B884718D9AF360074E94D /* Comment.m */,
+				C7F83DF918969B9B00B0A7B0 /* Uv.h */,
+				C7F83DFA18969B9B00B0A7B0 /* Uv.m */,
+				C72D12931920D13F00380CE6 /* RecentComment.h */,
+				C72D12941920D13F00380CE6 /* RecentComment.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		C72D12921920CF2400380CE6 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C7930E5418C4CC35007870A8 /* UvDetailsViewController.h */,
+				C7930E5518C4CC35007870A8 /* UvDetailsViewController.m */,
+				C72D128D1920C6AF00380CE6 /* RecentActivityViewController.h */,
+				C72D128E1920C6AF00380CE6 /* RecentActivityViewController.m */,
+				C7F83DF618969A2000B0A7B0 /* UvsViewController.h */,
+				C7F83DF718969A2000B0A7B0 /* UvsViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		C78E1A261854EAF8003B00CE = {
@@ -143,30 +181,18 @@
 		C78E1A381854EAF8003B00CE /* UVweb */ = {
 			isa = PBXGroup;
 			children = (
-				C73B884918D9E4C80074E94D /* iPad */,
-				C7930E5418C4CC35007870A8 /* UvDetailsViewController.h */,
-				C7930E5518C4CC35007870A8 /* UvDetailsViewController.m */,
-				C721247E18BE0315000E20A7 /* OrderedDictionary.h */,
-				C721247F18BE0315000E20A7 /* OrderedDictionary.m */,
-				C78E1A411854EAF8003B00CE /* AppDelegate.h */,
-				C78E1A421854EAF8003B00CE /* AppDelegate.m */,
 				C78E1A611854EFBA003B00CE /* Storyboard.storyboard */,
-				C73B884318D9A1D30074E94D /* UvCommentCell.h */,
-				C73B884418D9A1D30074E94D /* UvCommentCell.m */,
-				C7F6F07118D8BB3200DDDF84 /* UvTitleCell.h */,
-				C7F6F07218D8BB3200DDDF84 /* UvTitleCell.m */,
+				C72D12921920CF2400380CE6 /* ViewControllers */,
+				C72D12911920CEB700380CE6 /* Classes */,
+				C72D12901920CDEC00380CE6 /* PrototypeCells */,
 				C733E0DF18556E65009C8A55 /* UVwebSessionManager.h */,
-				C733E0E018556E65009C8A55 /* UVwebSessionManager.m */,
-				C73B884618D9AF360074E94D /* Comment.h */,
-				C73B884718D9AF360074E94D /* Comment.m */,
-				C78E1A441854EAF8003B00CE /* Images.xcassets */,
-				C78E1A391854EAF8003B00CE /* Supporting Files */,
-				C7F83DF618969A2000B0A7B0 /* UvsViewController.h */,
-				C7F83DF718969A2000B0A7B0 /* UvsViewController.m */,
-				C7F83DF918969B9B00B0A7B0 /* Uv.h */,
-				C7F83DFA18969B9B00B0A7B0 /* Uv.m */,
+				C72D12961920F58900380CE6 /* UVwebSessionManager.m */,
 				C7F5E91D18C0E5E200A0CE01 /* UIColor+CustomColors.h */,
 				C7F5E91E18C0E5E200A0CE01 /* UIColor+CustomColors.m */,
+				C78E1A411854EAF8003B00CE /* AppDelegate.h */,
+				C78E1A421854EAF8003B00CE /* AppDelegate.m */,
+				C78E1A441854EAF8003B00CE /* Images.xcassets */,
+				C78E1A391854EAF8003B00CE /* Supporting Files */,
 			);
 			path = UVweb;
 			sourceTree = "<group>";
@@ -296,16 +322,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C72D12951920D13F00380CE6 /* RecentComment.m in Sources */,
 				C7F83DFB18969B9B00B0A7B0 /* Uv.m in Sources */,
-				C733E0E118556E65009C8A55 /* UVwebSessionManager.m in Sources */,
 				C7F83DF818969A2000B0A7B0 /* UvsViewController.m in Sources */,
 				C73B884818D9AF360074E94D /* Comment.m in Sources */,
 				C721248018BE0315000E20A7 /* OrderedDictionary.m in Sources */,
 				C7930E5618C4CC35007870A8 /* UvDetailsViewController.m in Sources */,
 				C78E1A431854EAF8003B00CE /* AppDelegate.m in Sources */,
 				C78E1A3F1854EAF8003B00CE /* main.m in Sources */,
+				C72D12971920F58900380CE6 /* UVwebSessionManager.m in Sources */,
 				C7F5E91F18C0E5E200A0CE01 /* UIColor+CustomColors.m in Sources */,
 				C73B884518D9A1D30074E94D /* UvCommentCell.m in Sources */,
+				C72D128F1920C6AF00380CE6 /* RecentActivityViewController.m in Sources */,
 				C7F6F07318D8BB3200DDDF84 /* UvTitleCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

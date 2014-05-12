@@ -18,5 +18,7 @@
 
 -(id)initWithJSONData:(NSDictionary *)commentJSON;
 -(NSString *)getFormattedGlobalRate;
+-(NSComparisonResult)compareReverseCommentId:(Comment*)otherComment;
+-(NSComparisonResult)compareCommentId:(Comment*)otherComment;
 
 @end

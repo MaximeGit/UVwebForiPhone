@@ -15,6 +15,7 @@
 @interface UvDetailsViewController : UITableViewController
 
 @property(strong, nonatomic) Uv *uv;
+@property (strong, nonatomic) NSMutableArray *uvComments;
 
 - (void) prepareWithUv:(Uv*)uv;
 

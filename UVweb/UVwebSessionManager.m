@@ -42,7 +42,7 @@
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    NSURLSessionDataTask *uvsJson = [_session dataTaskWithURL:[NSURL URLWithString:[_uvwebBaseUrl stringByAppendingString:@"all"]]
+    NSURLSessionDataTask *uvsJson = [_session dataTaskWithURL:[NSURL URLWithString:[_uvwebBaseUrl stringByAppendingString:@"uv/app/all"]]
                                      
                                             completionHandler:^(NSData *data,
                                                                 NSURLResponse *response,
@@ -51,8 +51,6 @@
                                                 
                                                 if (!error)
                                                 {
-                                                    NSLog(@"%@", _uvwebBaseUrl);
-                                                    
                                                     NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
                                                     if (httpResp.statusCode == 200)
                                                     {
@@ -100,13 +98,15 @@
     [uvsJson resume];
 }
 
-- (void)uvDetails:(Uv*)uv forTable:(UITableView*)table uvComments:(NSMutableArray*)uvComments
+- (void)uvDetails:(Uv*)uv forViewController:(UvDetailsViewController*)tableViewController
 {
+    NSMutableArray* uvComments = tableViewController.uvComments;
+    
     //Display the icons that shows we are fecthing data
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     //URL of the details in the web service
-    NSURL* uvDetailURL = [NSURL URLWithString:[_uvwebBaseUrl stringByAppendingString:@"details"]];
+    NSURL* uvDetailURL = [NSURL URLWithString:[_uvwebBaseUrl stringByAppendingString:@"uv/app/details"]];
     
     //Setting up the POST request
     NSString *postParameters = [NSString stringWithFormat:@"uvname=%@", [uv name]];
@@ -136,19 +136,30 @@
                                                         
                                                         if (!jsonError)
                                                         {
+                                                            //No error occured
                                                             NSLog(@"Retour: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                                                             
                                                             NSDictionary *uvBasicDetails = uvDetails[@"details"][@"uv"][0];
                                                             
+                                                            //Make sure the TP info exists before using it
                                                             if(![[uvBasicDetails valueForKey:@"tp"] isKindOfClass:[NSNull class]])
                                                             {
                                                                 uv.hasTp = [[uvBasicDetails valueForKey:@"tp"] boolValue];
                                                             }
                                                             
+                                                            //Make sure the final info exists before using it
                                                             if(![[uvBasicDetails valueForKey:@"final"] isKindOfClass:[NSNull class]])
                                                             {
                                                                 uv.hasFinal = [[uvBasicDetails valueForKey:@"final"] boolValue];
                                                             }
+                                                            
+                                                            //Setting up the title of the view and its attached UV
+                                                            Uv* controllerUv = tableViewController.uv;
+                                                            
+                                                            controllerUv.title = uvBasicDetails[@"title"];
+                                                            controllerUv.globalRate = [NSNumber numberWithDouble:[uvDetails[@"details"][@"averageRate"] doubleValue]];
+                                                            
+                                                            tableViewController.title = [NSString stringWithFormat:@"%@ | %@", [controllerUv name], [controllerUv getFormattedGlobalRate]];
                                                             
                                                             for (NSDictionary *comment in uvDetails[@"details"][@"comments"])
                                                             {
@@ -158,17 +169,11 @@
                                                             }
                                                             
                                                             //Sorting the comments
-                                                            [uvComments sortUsingComparator: ^NSComparisonResult(id obj1, id obj2){
-                                                                
-                                                                Comment *c1 = (Comment*)obj1;
-                                                                Comment *c2 = (Comment*)obj2;
-                                                                
-                                                                return [c2.commentId compare:c1.commentId];
-                                                            }];
+                                                            [uvComments sortUsingSelector:@selector(compareReverseCommentId:)];
                                                             
                                                             dispatch_async(dispatch_get_main_queue(), ^{
                                                                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                                                                [table reloadData];
+                                                                [tableViewController.tableView reloadData];
                                                             });
                                                         }
                                                     }
@@ -180,6 +185,65 @@
     [uvDetailsJson resume];
 }
 
+- (void)recentActivity:(RecentActivityViewController*)recentActivityViewController
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    NSMutableArray* recentComments = recentActivityViewController.recentComments;
+    
+    NSURLSessionDataTask *commentsJson = [_session dataTaskWithURL:[NSURL URLWithString:[_uvwebBaseUrl stringByAppendingString:@"app/recentactivity"]]
+                                     
+                                            completionHandler:^(NSData *data,
+                                                                NSURLResponse *response,
+                                                                NSError *error) {
+                                                
+                                                
+                                                if (!error)
+                                                {
+                                                    NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
+                                                    if (httpResp.statusCode == 200)
+                                                    {
+                                                        NSError *jsonError;
+                                                        
+                                                        NSDictionary *commentsFound =
+                                                        [NSJSONSerialization JSONObjectWithData:data
+                                                                                        options:NSJSONReadingAllowFragments
+                                                                                          error:&jsonError];
+                                                        
+                                                        if (!jsonError)
+                                                        {
+                                                            NSLog(@"Retour: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+                                                            
+                                                            for (NSDictionary *commentDictionary in commentsFound[@"comments"])
+                                                            {
+                                                                Comment *comment = [[Comment alloc] initWithJSONData:commentDictionary];
+                                                                Uv *uv = [[Uv alloc] initWithName:commentDictionary[@"name"] andTitle:commentDictionary[@"title"]];
+                                                                
+                                                                RecentComment *newRecentComment = [[RecentComment alloc] initWithComment:comment andUv:uv];
+                                                                
+                                                                [recentComments addObject:newRecentComment];
+                                                            }
+                                                            
+                                                            //Need to sort the NSMutableDictionary keys as they were not ordered in the JSON
+                                                            [recentComments sortUsingSelector:@selector(compareReverseCommentId:)];
+                                                            
+                                                            dispatch_async(dispatch_get_main_queue(), ^{
+                                                                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                                                                [recentActivityViewController.tableView reloadData];
+                                                            });
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                                                    }
+                                                }
+                                            }];
+    
+    [commentsJson resume];
+}
+
+//Singleton design pattern
 + (UVwebSessionManager*)sharedSessionManager
 {
     static UVwebSessionManager *_sharedSessionManager = nil;

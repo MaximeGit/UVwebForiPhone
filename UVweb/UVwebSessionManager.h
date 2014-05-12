@@ -10,13 +10,17 @@
 #import "OrderedDictionary.h"
 #import "Uv.h"
 #import "Comment.h"
+#import "RecentActivityViewController.h"
+#import "RecentComment.h"
+#import "UvDetailsViewController.h"
 
 @interface UVwebSessionManager : NSObject
 
 @property(nonatomic, strong) NSMutableString *uvwebBaseUrl;
 
 - (void)getAllUvsAndRefreshTable:(UITableView*)table uvs:(OrderedDictionary*)uvs;
-- (void)uvDetails:(Uv*)uv forTable:(UITableView*)table uvComments:(NSMutableArray*)uvComments;
+- (void)uvDetails:(Uv*)uv forViewController:(UITableViewController*)tableViewController;
+- (void)recentActivity:(UITableViewController*)recentActivityViewController;
 
 + (UVwebSessionManager*) sharedSessionManager;
 

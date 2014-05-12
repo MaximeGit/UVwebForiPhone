@@ -23,6 +23,19 @@
     return self;
 }
 
+-(id)initWithName:(NSString *)name andTitle:(NSString *)title
+{
+    if(self = [super init])
+    {
+        _name = name;
+        _title = title;
+        _globalRate = [NSNumber numberWithDouble:0];
+        _commentCount = [NSNumber numberWithDouble:0];
+    }
+    
+    return self;
+}
+
 -(NSString *)getFormattedGlobalRate
 {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];

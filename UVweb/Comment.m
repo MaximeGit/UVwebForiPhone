@@ -31,4 +31,14 @@
     return [formatter stringFromNumber:_globalRate];
 }
 
+-(NSComparisonResult)compareReverseCommentId:(Comment*)otherComment
+{
+    return [otherComment.commentId compare:_commentId];
+}
+
+-(NSComparisonResult)compareCommentId:(Comment*)otherComment
+{
+    return [_commentId compare:otherComment.commentId];
+}
+
 @end

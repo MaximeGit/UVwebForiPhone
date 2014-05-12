@@ -271,8 +271,6 @@
         
         Uv *selectedUv = [[sourceDictionary objectForKey:[sourceDictionary keyAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
         
-        destinationController.title = [NSString stringWithFormat:@"%@ | %@", [selectedUv name], [selectedUv getFormattedGlobalRate]];
-        
         [destinationController prepareWithUv:selectedUv];
     }
 }

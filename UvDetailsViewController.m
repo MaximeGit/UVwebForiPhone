@@ -11,7 +11,6 @@
 @interface UvDetailsViewController ()
 
 @property (strong, nonatomic) UVwebSessionManager *sessionManager;
-@property (strong, nonatomic) NSMutableArray *uvComments;
 @property (strong, nonatomic) UvTitleCell *prototypeTitleCell;
 @property (strong, nonatomic) UvCommentCell *prototypeCommentCell;
 
@@ -86,7 +85,8 @@
 - (void) prepareWithUv:(Uv*)uv
 {
     _uv = uv;
-    [_sessionManager uvDetails:uv forTable:self.tableView uvComments:_uvComments];
+    NSLog(@"dsfsdf");
+    [_sessionManager uvDetails:uv forViewController:self];
 }
 
 - (UvTitleCell *)prototypeTitleCell
