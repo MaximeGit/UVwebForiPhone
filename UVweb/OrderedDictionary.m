@@ -122,6 +122,10 @@ NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent)
     [_array sortUsingSelector:comparator];
 }
 
+- (void)sortKeysUsingDescriptors:(NSArray*)descriptors
+{
+    [_array sortUsingDescriptors:descriptors];
+}
 
 -(NSArray*)allKeysSorted
 {

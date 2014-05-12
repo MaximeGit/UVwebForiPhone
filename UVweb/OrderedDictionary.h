@@ -10,6 +10,7 @@
 - (id)keyAtIndex:(NSUInteger)anIndex;
 - (NSEnumerator *)reverseKeyEnumerator;
 - (void)sortKeysUsingSelector:(SEL)comparator;
+- (void)sortKeysUsingDescriptors:(NSArray*)descriptors;
 - (NSArray*)allKeysSorted;
 
 @end

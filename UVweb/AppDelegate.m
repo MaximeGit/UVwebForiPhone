@@ -12,6 +12,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //Color of the navigation bar
+    [[UINavigationBar appearance] setBarTintColor:[UIColor uvwebColor]];
+    
+    //Color of the back text in segue for example
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    //Color of the title text displayed in the navigation bar
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                       [UIColor whiteColor],NSForegroundColorAttributeName,
+                                                       [UIColor whiteColor],NSBackgroundColorAttributeName,nil]];
+    
+    //Color of the system icons - Battery, etc.
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+
     return YES;
 }
 

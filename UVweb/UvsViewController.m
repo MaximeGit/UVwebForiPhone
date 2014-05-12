@@ -29,13 +29,9 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    [super viewDidLoad];    
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.clearsSelectionOnViewWillAppear = NO;
     
     CGRect newBounds = self.tableView.bounds;
     newBounds.origin.y = newBounds.origin.y + _uvSearchBar.bounds.size.height;
@@ -43,14 +39,19 @@
 
     
     _filteredUVs = [[OrderedDictionary alloc] init];
+    
+    //Adapting the height of the search bar
     [self.searchDisplayController.searchResultsTableView setRowHeight:self.tableView.rowHeight];
 
+    //Preparing the sort chooser
+    [self.sortSegmentedControl addTarget:self action:@selector(didPressSortType:) forControlEvents:UIControlEventValueChanged];
+    
     [self downloadUvs];
 }
 
 - (void)downloadUvs
 {
-    _session = [[UVwebSessionManager alloc] initWithBaseurl:@""];
+    _session = [UVwebSessionManager sharedSessionManager];
     
     _orderedUVs = [[OrderedDictionary alloc] init];
     
@@ -82,7 +83,6 @@
         uv = [[_orderedUVs objectForKey:[_orderedUVs keyAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:100];
- //   nameLabel.text = uv.name;
     nameLabel.attributedText = [uv attributeStringForName];
     
     UILabel *globalRateLabel = (UILabel *)[cell viewWithTag:101];
@@ -175,36 +175,88 @@
 }
 
 /*
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ * Triggered when a sort type is selected: have to sort the UVs accordingly
+ * selectedSegmentIndex == 0 if user wants sorted by name. selectedSegmentIndex == 1 if user wants sorted by global rate.
+ */
+-(void)didPressSortType:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"uvDetail"])
+    //Dictionary containing the updated model
+    OrderedDictionary* newOrderedUvs = [[OrderedDictionary alloc] init];
+    
+    if([(UISegmentedControl*) sender selectedSegmentIndex] == 0)
     {
-        UIViewController *uvDetailViewController = [segue destinationViewController];
-        
-        //We need to know which table is used
-        if(sender == self.searchDisplayController.searchResultsTableView)
+        //Sort by name
+        for (NSString *groupRate in _orderedUVs)
         {
-            NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
-            NSString *destinationTitle = [[[_filteredUVs objectForKey:[_filteredUVs keyAtIndex:indexPath.section]] objectAtIndex:indexPath.row] name];
-            [uvDetailViewController setTitle:destinationTitle];
+            NSArray *rateUvs = _orderedUVs[groupRate];
+            
+            for (Uv* uv in rateUvs)
+            {
+                //First letter of the UV name
+                NSString* uvLetter = [uv.name substringToIndex:1];
+                
+                //Does the rate exist in the keys of the dictionary?
+                if(![newOrderedUvs objectForKey:uvLetter])
+                {
+                    [newOrderedUvs setObject:[[NSMutableArray alloc] init] forKey:uvLetter];
+                }
+                [[newOrderedUvs objectForKey:uvLetter] addObject:uv];
+            }
         }
-        else
+        
+        //Need to sort the NSMutableDictionary keys as they were not ordered in the JSON
+        [newOrderedUvs sortKeysUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+        
+        for (NSString *groupLetter in newOrderedUvs)
         {
-            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-            NSString *destinationTitle = [[[_orderedUVs objectForKey:[_orderedUVs keyAtIndex:indexPath.section]] objectAtIndex:indexPath.row] name];
-            [uvDetailViewController setTitle:destinationTitle];
+            NSMutableArray *letterUvs = newOrderedUvs[groupLetter];
+            letterUvs = [letterUvs sortedArrayUsingSelector:@selector(compareName:)];
+        }
+
+    }
+    else
+    {
+        for (NSString *groupLetter in _orderedUVs)
+        {
+            NSArray *letterUvs = _orderedUVs[groupLetter];
+            for (Uv* uv in letterUvs)
+            {
+                //We need rates as integers so that no crash will occur
+                NSString* ceilGlobalRate = [uv formattedCeilGlobalRate];
+                
+                //Does the rate exist in the keys of the dictionary?
+                if(![newOrderedUvs objectForKey:ceilGlobalRate])
+                {
+                    [newOrderedUvs setObject:[[NSMutableArray alloc] init] forKey:ceilGlobalRate];
+                }
+                [[newOrderedUvs objectForKey:ceilGlobalRate] addObject:uv];
+            }
+        }
+        
+        //Need to sort the NSMutableDictionary keys as they were not ordered in the JSON
+        [newOrderedUvs sortKeysUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"doubleValue" ascending:NO]]];
+
+        for (NSString *integerRate in newOrderedUvs)
+        {
+            NSMutableArray *rateUvs = newOrderedUvs[integerRate];
+            rateUvs = [rateUvs sortedArrayUsingSelector:@selector(compareReverseGlobalRate:)];
         }
     }
+    
+    _orderedUVs = newOrderedUvs;
+
+    [self.tableView reloadData];
 }
-*/
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"uvDetail"])
+    if ([segue.identifier isEqualToString:@"uvDetails"])
     {
         // Sender is the table view cell.
         OrderedDictionary *sourceDictionary;
         
         NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForCell:(UITableViewCell *)sender];
+        
         if (indexPath != nil)
         {
             sourceDictionary = _filteredUVs;
@@ -215,9 +267,13 @@
             sourceDictionary = _orderedUVs;
         }
         
-        UIViewController *destinationController = segue.destinationViewController;
-        NSString *destinationTitle = [[[sourceDictionary objectForKey:[sourceDictionary keyAtIndex:indexPath.section]] objectAtIndex:indexPath.row] name];
-        destinationController.title = destinationTitle;
+        UvDetailsViewController *destinationController = (UvDetailsViewController*)segue.destinationViewController;
+        
+        Uv *selectedUv = [[sourceDictionary objectForKey:[sourceDictionary keyAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+        
+        destinationController.title = [NSString stringWithFormat:@"%@ | %@", [selectedUv name], [selectedUv getFormattedGlobalRate]];
+        
+        [destinationController prepareWithUv:selectedUv];
     }
 }
 
@@ -261,16 +317,5 @@
 }
 */
 
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

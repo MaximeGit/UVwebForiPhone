@@ -19,7 +19,7 @@
         _globalRate = [NSNumber numberWithDouble:[UvJSON[@"globalRate"] doubleValue]];
         _commentCount = [NSNumber numberWithDouble:[UvJSON[@"commentCount"] doubleValue]];
     }
-    
+
     return self;
 }
 
@@ -31,6 +31,18 @@
     [formatter setMinimumFractionDigits:2];
 
     return [formatter stringFromNumber:_globalRate];
+}
+
+-(NSString *)formattedCeilGlobalRate
+{
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [formatter setMaximumFractionDigits:0];
+    [formatter setMinimumFractionDigits:0];
+    
+    NSNumber* ceilGlobalRate = [NSNumber numberWithInteger:ceil([_globalRate integerValue])];
+    
+    return [formatter stringFromNumber:ceilGlobalRate];
 }
 
 -(NSMutableAttributedString *)attributeStringForName
@@ -48,11 +60,28 @@
     //If there is a number, use the range to color it
     if (!NSEqualRanges(rangeOfFirstMatch, NSMakeRange(NSNotFound, 0)))
     {
-        UIColor *uvwebColor = [UIColor colorWithRed:114.0/255.0 green:187.0/255.0 blue:170.0/255.0 alpha:100.0];
-        [uvAttributedString addAttribute:NSForegroundColorAttributeName value:uvwebColor range:rangeOfFirstMatch];
+        [uvAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor uvwebColor] range:rangeOfFirstMatch];
     }
 
     return uvAttributedString;
+}
+
+/*
+ * Method used to compare two UV global rates.
+ * @return : Reversed comparison between both UV global rates.
+ */
+- (NSComparisonResult)compareReverseGlobalRate:(Uv *)otherUv
+{
+    return [otherUv.globalRate compare:_globalRate];
+}
+
+/*
+ * Method used to compare two UV names.
+ * @return : Comparison between both UV global rates.
+ */
+- (NSComparisonResult)compareName:(Uv *)otherUv
+{
+    return [_name compare:otherUv.name];
 }
 
 @end

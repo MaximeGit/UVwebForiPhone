@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C721248018BE0315000E20A7 /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C721247F18BE0315000E20A7 /* OrderedDictionary.m */; };
 		C733E0E118556E65009C8A55 /* UVwebSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C733E0E018556E65009C8A55 /* UVwebSessionManager.m */; };
+		C73B884518D9A1D30074E94D /* UvCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C73B884418D9A1D30074E94D /* UvCommentCell.m */; };
+		C73B884818D9AF360074E94D /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = C73B884718D9AF360074E94D /* Comment.m */; };
 		C78E1A331854EAF8003B00CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78E1A321854EAF8003B00CE /* Foundation.framework */; };
 		C78E1A351854EAF8003B00CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78E1A341854EAF8003B00CE /* CoreGraphics.framework */; };
 		C78E1A371854EAF8003B00CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78E1A361854EAF8003B00CE /* UIKit.framework */; };
@@ -22,6 +24,9 @@
 		C78E1A561854EAF8003B00CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C78E1A541854EAF8003B00CE /* InfoPlist.strings */; };
 		C78E1A581854EAF8003B00CE /* UVwebTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C78E1A571854EAF8003B00CE /* UVwebTests.m */; };
 		C78E1A621854EFBA003B00CE /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C78E1A611854EFBA003B00CE /* Storyboard.storyboard */; };
+		C7930E5618C4CC35007870A8 /* UvDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7930E5518C4CC35007870A8 /* UvDetailsViewController.m */; };
+		C7F5E91F18C0E5E200A0CE01 /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F5E91E18C0E5E200A0CE01 /* UIColor+CustomColors.m */; };
+		C7F6F07318D8BB3200DDDF84 /* UvTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F6F07218D8BB3200DDDF84 /* UvTitleCell.m */; };
 		C7F83DF818969A2000B0A7B0 /* UvsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F83DF718969A2000B0A7B0 /* UvsViewController.m */; };
 		C7F83DFB18969B9B00B0A7B0 /* Uv.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F83DFA18969B9B00B0A7B0 /* Uv.m */; };
 /* End PBXBuildFile section */
@@ -41,6 +46,10 @@
 		C721247F18BE0315000E20A7 /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderedDictionary.m; sourceTree = "<group>"; };
 		C733E0DF18556E65009C8A55 /* UVwebSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UVwebSessionManager.h; sourceTree = "<group>"; };
 		C733E0E018556E65009C8A55 /* UVwebSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UVwebSessionManager.m; sourceTree = "<group>"; };
+		C73B884318D9A1D30074E94D /* UvCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UvCommentCell.h; sourceTree = "<group>"; };
+		C73B884418D9A1D30074E94D /* UvCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UvCommentCell.m; sourceTree = "<group>"; };
+		C73B884618D9AF360074E94D /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		C73B884718D9AF360074E94D /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		C78E1A2F1854EAF8003B00CE /* UVweb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UVweb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78E1A321854EAF8003B00CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C78E1A341854EAF8003B00CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -58,6 +67,12 @@
 		C78E1A551854EAF8003B00CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C78E1A571854EAF8003B00CE /* UVwebTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UVwebTests.m; sourceTree = "<group>"; };
 		C78E1A611854EFBA003B00CE /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		C7930E5418C4CC35007870A8 /* UvDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UvDetailsViewController.h; path = ../UvDetailsViewController.h; sourceTree = "<group>"; };
+		C7930E5518C4CC35007870A8 /* UvDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UvDetailsViewController.m; path = ../UvDetailsViewController.m; sourceTree = "<group>"; };
+		C7F5E91D18C0E5E200A0CE01 /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
+		C7F5E91E18C0E5E200A0CE01 /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
+		C7F6F07118D8BB3200DDDF84 /* UvTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UvTitleCell.h; sourceTree = "<group>"; };
+		C7F6F07218D8BB3200DDDF84 /* UvTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UvTitleCell.m; sourceTree = "<group>"; };
 		C7F83DF618969A2000B0A7B0 /* UvsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UvsViewController.h; sourceTree = "<group>"; };
 		C7F83DF718969A2000B0A7B0 /* UvsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UvsViewController.m; sourceTree = "<group>"; };
 		C7F83DF918969B9B00B0A7B0 /* Uv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Uv.h; sourceTree = "<group>"; };
@@ -88,6 +103,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C73B884918D9E4C80074E94D /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 		C78E1A261854EAF8003B00CE = {
 			isa = PBXGroup;
 			children = (
@@ -121,19 +143,30 @@
 		C78E1A381854EAF8003B00CE /* UVweb */ = {
 			isa = PBXGroup;
 			children = (
+				C73B884918D9E4C80074E94D /* iPad */,
+				C7930E5418C4CC35007870A8 /* UvDetailsViewController.h */,
+				C7930E5518C4CC35007870A8 /* UvDetailsViewController.m */,
 				C721247E18BE0315000E20A7 /* OrderedDictionary.h */,
 				C721247F18BE0315000E20A7 /* OrderedDictionary.m */,
 				C78E1A411854EAF8003B00CE /* AppDelegate.h */,
 				C78E1A421854EAF8003B00CE /* AppDelegate.m */,
 				C78E1A611854EFBA003B00CE /* Storyboard.storyboard */,
+				C73B884318D9A1D30074E94D /* UvCommentCell.h */,
+				C73B884418D9A1D30074E94D /* UvCommentCell.m */,
+				C7F6F07118D8BB3200DDDF84 /* UvTitleCell.h */,
+				C7F6F07218D8BB3200DDDF84 /* UvTitleCell.m */,
 				C733E0DF18556E65009C8A55 /* UVwebSessionManager.h */,
 				C733E0E018556E65009C8A55 /* UVwebSessionManager.m */,
+				C73B884618D9AF360074E94D /* Comment.h */,
+				C73B884718D9AF360074E94D /* Comment.m */,
 				C78E1A441854EAF8003B00CE /* Images.xcassets */,
 				C78E1A391854EAF8003B00CE /* Supporting Files */,
 				C7F83DF618969A2000B0A7B0 /* UvsViewController.h */,
 				C7F83DF718969A2000B0A7B0 /* UvsViewController.m */,
 				C7F83DF918969B9B00B0A7B0 /* Uv.h */,
 				C7F83DFA18969B9B00B0A7B0 /* Uv.m */,
+				C7F5E91D18C0E5E200A0CE01 /* UIColor+CustomColors.h */,
+				C7F5E91E18C0E5E200A0CE01 /* UIColor+CustomColors.m */,
 			);
 			path = UVweb;
 			sourceTree = "<group>";
@@ -266,9 +299,14 @@
 				C7F83DFB18969B9B00B0A7B0 /* Uv.m in Sources */,
 				C733E0E118556E65009C8A55 /* UVwebSessionManager.m in Sources */,
 				C7F83DF818969A2000B0A7B0 /* UvsViewController.m in Sources */,
+				C73B884818D9AF360074E94D /* Comment.m in Sources */,
 				C721248018BE0315000E20A7 /* OrderedDictionary.m in Sources */,
+				C7930E5618C4CC35007870A8 /* UvDetailsViewController.m in Sources */,
 				C78E1A431854EAF8003B00CE /* AppDelegate.m in Sources */,
 				C78E1A3F1854EAF8003B00CE /* main.m in Sources */,
+				C7F5E91F18C0E5E200A0CE01 /* UIColor+CustomColors.m in Sources */,
+				C73B884518D9A1D30074E94D /* UvCommentCell.m in Sources */,
+				C7F6F07318D8BB3200DDDF84 /* UvTitleCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,7 +428,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UVweb/UVweb-Prefix.pch";
 				INFOPLIST_FILE = "UVweb/UVweb-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -403,7 +443,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UVweb/UVweb-Prefix.pch";
 				INFOPLIST_FILE = "UVweb/UVweb-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
