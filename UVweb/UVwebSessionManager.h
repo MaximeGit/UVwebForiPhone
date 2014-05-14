@@ -13,12 +13,13 @@
 #import "RecentActivityViewController.h"
 #import "RecentComment.h"
 #import "UvDetailsViewController.h"
+#import "UvsViewController.h"
 
 @interface UVwebSessionManager : NSObject
 
 @property(nonatomic, strong) NSMutableString *uvwebBaseUrl;
 
-- (void)getAllUvsAndRefreshTable:(UITableView*)table uvs:(OrderedDictionary*)uvs;
+- (void)getAllUvsAndRefreshTable:(UITableViewController*)tableViewController;
 - (void)uvDetails:(Uv*)uv forViewController:(UITableViewController*)tableViewController;
 - (void)recentActivity:(UITableViewController*)recentActivityViewController;
 

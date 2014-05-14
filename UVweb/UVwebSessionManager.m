@@ -38,9 +38,11 @@
     return self;
 }
 
-- (void)getAllUvsAndRefreshTable:(UITableView*)table uvs:(OrderedDictionary*)uvs
+- (void)getAllUvsAndRefreshTable:(UvsViewController*)tableViewController
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    OrderedDictionary *uvs = [tableViewController orderedUVs];
     
     NSURLSessionDataTask *uvsJson = [_session dataTaskWithURL:[NSURL URLWithString:[_uvwebBaseUrl stringByAppendingString:@"uv/app/all"]]
                                      
@@ -84,13 +86,14 @@
                                                             
                                                             dispatch_async(dispatch_get_main_queue(), ^{
                                                                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                                                                [table reloadData];
+                                                                [tableViewController reloadDataTable];
                                                             });
                                                         }
                                                     }
                                                     else
                                                     {
                                                         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                                                        [tableViewController reloadDataTable];
                                                     }
                                                 }
                                             }];
@@ -144,13 +147,21 @@
                                                             //Make sure the TP info exists before using it
                                                             if(![[uvBasicDetails valueForKey:@"tp"] isKindOfClass:[NSNull class]])
                                                             {
-                                                                uv.hasTp = [[uvBasicDetails valueForKey:@"tp"] boolValue];
+                                                                uv.hasTp = [[uvBasicDetails valueForKey:@"tp"] intValue];
+                                                            }
+                                                            else
+                                                            {
+                                                                uv.hasTp = 2;
                                                             }
                                                             
                                                             //Make sure the final info exists before using it
                                                             if(![[uvBasicDetails valueForKey:@"final"] isKindOfClass:[NSNull class]])
                                                             {
-                                                                uv.hasFinal = [[uvBasicDetails valueForKey:@"final"] boolValue];
+                                                                uv.hasFinal = [[uvBasicDetails valueForKey:@"final"] intValue];
+                                                            }
+                                                            else
+                                                            {
+                                                                uv.hasFinal = 2;
                                                             }
                                                             
                                                             //Setting up the title of the view and its attached UV
@@ -173,7 +184,7 @@
                                                             
                                                             dispatch_async(dispatch_get_main_queue(), ^{
                                                                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                                                                [tableViewController.tableView reloadData];
+                                                                [tableViewController reloadDataTable];
                                                             });
                                                         }
                                                     }
@@ -229,7 +240,7 @@
                                                             
                                                             dispatch_async(dispatch_get_main_queue(), ^{
                                                                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                                                                [recentActivityViewController.tableView reloadData];
+                                                                [recentActivityViewController reloadDataTable];
                                                             });
                                                         }
                                                     }

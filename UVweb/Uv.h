@@ -15,8 +15,8 @@
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSNumber *globalRate;
 @property (nonatomic, strong) NSNumber *commentCount;
-@property (nonatomic) BOOL hasTp;
-@property (nonatomic) BOOL hasFinal;
+@property (nonatomic) int hasTp;
+@property (nonatomic) int hasFinal;
 
 -(id)initWithJSONData:(NSDictionary *)UvJSON;
 -(NSString *)getFormattedGlobalRate;

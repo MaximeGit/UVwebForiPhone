@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) OrderedDictionary *orderedUVs;
 @property (nonatomic, strong) OrderedDictionary *filteredUVs;
+
+//Searchbar outlet
 @property IBOutlet UISearchBar *uvSearchBar;
 
 //Segmented control outlet to choose the sort type (by rate or by name)
@@ -21,5 +23,7 @@
 
 -(IBAction)startSearch:(id)sender;
 -(void)didPressSortType:(id)sender;
+
+- (void)reloadDataTable;
 
 @end

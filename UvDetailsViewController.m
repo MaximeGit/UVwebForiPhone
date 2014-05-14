@@ -39,6 +39,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //Refresh control
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,7 +90,6 @@
 - (void) prepareWithUv:(Uv*)uv
 {
     _uv = uv;
-    NSLog(@"dsfsdf");
     [_sessionManager uvDetails:uv forViewController:self];
 }
 
@@ -138,6 +142,23 @@
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return UITableViewAutomaticDimension;
+}
+
+- (void)refreshTable
+{
+    [_uvComments removeAllObjects];
+    
+    [_sessionManager uvDetails:_uv forViewController:self];
+}
+
+- (void)reloadDataTable
+{
+    if([self.refreshControl isRefreshing])
+    {
+        [self.refreshControl endRefreshing];
+    }
+    
+    [self.tableView reloadData];
 }
 
 @end

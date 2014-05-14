@@ -11,7 +11,7 @@
 @interface RecentActivityViewController ()
 
 @property (strong, nonatomic) UVwebSessionManager *sessionManager;
-@property (strong, nonatomic) UvCommentCell *prototypeCommentCell;
+@property (strong, nonatomic) RecentCommentCell *prototypeCommentCell;
 
 @end
 
@@ -33,6 +33,11 @@
     _sessionManager = [UVwebSessionManager sharedSessionManager];
     _recentComments = [[NSMutableArray alloc] init];
     
+    //Refresh control
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+    
     [_sessionManager recentActivity:self];
 }
 
@@ -40,8 +45,6 @@
 {
     [super didReceiveMemoryWarning];
 }
-
-#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -55,13 +58,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString* CellIdentifier = @"UvComment";
+    static NSString* CellIdentifier = @"RecentComment";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     RecentComment* recentComment = [_recentComments objectAtIndex:indexPath.row];
     
-    [(UvCommentCell*)cell configureCellWithComment:recentComment.comment];
+    [(RecentCommentCell*)cell configureCellWithRecentComment:recentComment];
     
     return cell;
 }
@@ -69,7 +72,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RecentComment *recentComment = [_recentComments objectAtIndex:indexPath.row];
-    [self.prototypeCommentCell configureCellWithComment:[recentComment comment]];
+    [self.prototypeCommentCell configureCellWithRecentComment:recentComment];
     self.prototypeCommentCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), CGRectGetHeight(self.prototypeCommentCell.bounds));
     [self.prototypeCommentCell layoutIfNeeded];
     CGSize size = [self.prototypeCommentCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
@@ -92,15 +95,32 @@
     }
 }
 
-- (UvCommentCell *)prototypeCommentCell
+- (RecentCommentCell *)prototypeCommentCell
 {
-    static NSString *CellIdentifier = @"UvComment";
+    static NSString *CellIdentifier = @"RecentComment";
     
     if (!_prototypeCommentCell)
     {
         _prototypeCommentCell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     }
     return _prototypeCommentCell;
+}
+
+- (void)refreshTable
+{
+    [_recentComments removeAllObjects];
+    
+    [_sessionManager recentActivity:self];
+}
+
+- (void)reloadDataTable
+{
+    if([self.refreshControl isRefreshing])
+    {
+        [self.refreshControl endRefreshing];
+    }
+    
+    [self.tableView reloadData];
 }
 
 @end

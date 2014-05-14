@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Uv.h"
 #import "UVwebSessionManager.h"
-#import "UvCommentCell.h"
+#import "RecentCommentCell.h"
 
 @interface RecentActivityViewController : UITableViewController
 
 @property (strong, nonatomic) NSMutableArray *recentComments;
+
+- (void)reloadDataTable;
 
 @end

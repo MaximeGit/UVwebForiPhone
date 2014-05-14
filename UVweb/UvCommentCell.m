@@ -48,7 +48,7 @@
 - (void)configureCellWithComment:(Comment*)comment
 {
     _commentCommentLabel.text = [comment comment];
-    _commentGlobalRateLabel.text = [comment getFormattedGlobalRate];
+    _commentGlobalRateLabel.attributedText = [comment attributedGlobalRate];
     _commentIdentityLabel.text = [comment identity];
     _commentSemesterLabel.text = [comment semester];
 }

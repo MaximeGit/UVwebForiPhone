@@ -37,7 +37,9 @@
     newBounds.origin.y = newBounds.origin.y + _uvSearchBar.bounds.size.height;
     self.tableView.bounds = newBounds;
 
-    
+    _session = [UVwebSessionManager sharedSessionManager];
+
+    _orderedUVs = [[OrderedDictionary alloc] init];
     _filteredUVs = [[OrderedDictionary alloc] init];
     
     //Adapting the height of the search bar
@@ -46,16 +48,13 @@
     //Preparing the sort chooser
     [self.sortSegmentedControl addTarget:self action:@selector(didPressSortType:) forControlEvents:UIControlEventValueChanged];
     
-    [self downloadUvs];
-}
-
-- (void)downloadUvs
-{
-    _session = [UVwebSessionManager sharedSessionManager];
+    //Refresh control
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
     
-    _orderedUVs = [[OrderedDictionary alloc] init];
-    
-    [_session getAllUvsAndRefreshTable:self.tableView uvs:_orderedUVs];
+    //Getting UVs from web service
+    [_session getAllUvsAndRefreshTable:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -211,6 +210,7 @@
         {
             NSMutableArray *letterUvs = newOrderedUvs[groupLetter];
             letterUvs = [letterUvs sortedArrayUsingSelector:@selector(compareName:)];
+            [newOrderedUvs setObject:letterUvs forKey:groupLetter];
         }
 
     }
@@ -275,45 +275,23 @@
     }
 }
 
-/*
- 
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)refreshTable
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    [_orderedUVs removeAllObjects];
+    [_session getAllUvsAndRefreshTable:self];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)reloadDataTable
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    if([self.refreshControl isRefreshing])
+    {
+        [self.refreshControl endRefreshing];
+    }
+    
+    //Set name sort after loading data
+    _sortSegmentedControl.selectedSegmentIndex = 0;
+    
+    [self.tableView reloadData];
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 @end

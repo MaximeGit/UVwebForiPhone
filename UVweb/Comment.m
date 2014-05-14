@@ -41,4 +41,30 @@
     return [_commentId compare:otherComment.commentId];
 }
 
+-(NSMutableAttributedString*)attributedGlobalRate
+{
+    NSMutableAttributedString *attributedGlobalRate = [[NSMutableAttributedString alloc] initWithString:[_globalRate stringValue]];
+    
+    NSRange range = NSMakeRange(0, [attributedGlobalRate length]);
+    
+    UIColor *color;
+
+    if([_globalRate integerValue] < 4)
+    {
+        color = [UIColor redColor];
+    }
+    else if([_globalRate integerValue] > 6)
+    {
+        color = [UIColor uvwebColor];
+    }
+    else
+    {
+        return attributedGlobalRate;
+    }
+    
+    [attributedGlobalRate addAttribute:NSForegroundColorAttributeName value:color range:range];
+
+    return attributedGlobalRate;
+}
+
 @end

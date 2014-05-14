@@ -18,5 +18,6 @@
 @property (strong, nonatomic) NSMutableArray *uvComments;
 
 - (void) prepareWithUv:(Uv*)uv;
+- (void)reloadDataTable;
 
 @end

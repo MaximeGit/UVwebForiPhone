@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UIColor+CustomColors.h"
 
 @interface Comment : NSObject
 
@@ -20,5 +21,6 @@
 -(NSString *)getFormattedGlobalRate;
 -(NSComparisonResult)compareReverseCommentId:(Comment*)otherComment;
 -(NSComparisonResult)compareCommentId:(Comment*)otherComment;
+-(NSMutableAttributedString*)attributedGlobalRate;
 
 @end

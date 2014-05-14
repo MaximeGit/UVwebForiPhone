@@ -311,59 +311,63 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UvComment" rowHeight="70" id="jGh-Dd-1eG" customClass="UvCommentCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RecentComment" rowHeight="70" id="LIs-RY-z70" customClass="RecentCommentCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jGh-Dd-1eG" id="cuj-MR-7Hx">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LIs-RY-z70" id="k7X-fB-AOT">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJs-o1-1CK">
-                                            <rect key="frame" x="10" y="10" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ed9-xE-AFR">
-                                            <rect key="frame" x="139" y="10" width="42" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCb-vr-KU0">
+                                            <rect key="frame" x="122" y="16" width="42" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXM-Wj-d9b">
-                                            <rect key="frame" x="268" y="10" width="42" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oP-LP-tZ4">
+                                            <rect key="frame" x="245" y="16" width="42" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="2dv-gG-bO3">
-                                            <rect key="frame" x="10" y="41" width="300" height="18"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="749" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="277" translatesAutoresizingMaskIntoConstraints="NO" id="oyP-Hp-lh8">
+                                            <rect key="frame" x="10" y="52" width="277" height="7"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbp-bA-Jvn">
+                                            <rect key="frame" x="10" y="10" width="62" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="62" id="ajM-d4-3G9"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="2dv-gG-bO3" firstAttribute="leading" secondItem="yJs-o1-1CK" secondAttribute="leading" id="AS1-9p-IXe"/>
-                                        <constraint firstAttribute="centerX" secondItem="ed9-xE-AFR" secondAttribute="centerX" id="K8M-eD-LP5"/>
-                                        <constraint firstItem="hXM-Wj-d9b" firstAttribute="trailing" secondItem="2dv-gG-bO3" secondAttribute="trailing" id="MKE-aV-Kfl"/>
-                                        <constraint firstAttribute="bottom" secondItem="2dv-gG-bO3" secondAttribute="bottom" constant="10" id="Sfp-MX-3bm"/>
-                                        <constraint firstItem="hXM-Wj-d9b" firstAttribute="top" secondItem="yJs-o1-1CK" secondAttribute="top" id="TJH-SO-kt2"/>
-                                        <constraint firstAttribute="trailing" secondItem="hXM-Wj-d9b" secondAttribute="trailing" constant="10" id="aPf-Jx-Myw"/>
-                                        <constraint firstItem="ed9-xE-AFR" firstAttribute="top" secondItem="yJs-o1-1CK" secondAttribute="top" id="e0V-VT-22J"/>
-                                        <constraint firstItem="ed9-xE-AFR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yJs-o1-1CK" secondAttribute="trailing" constant="10" id="iJ1-wS-cbD"/>
-                                        <constraint firstItem="yJs-o1-1CK" firstAttribute="top" secondItem="cuj-MR-7Hx" secondAttribute="top" constant="10" id="iOy-NS-XSy"/>
-                                        <constraint firstItem="yJs-o1-1CK" firstAttribute="leading" secondItem="cuj-MR-7Hx" secondAttribute="leading" constant="10" id="jyd-RM-ibq"/>
-                                        <constraint firstItem="2dv-gG-bO3" firstAttribute="top" secondItem="yJs-o1-1CK" secondAttribute="bottom" constant="10" id="x10-xE-rwl"/>
+                                        <constraint firstAttribute="bottom" secondItem="oyP-Hp-lh8" secondAttribute="bottom" constant="10" id="4cL-Mt-ZnP"/>
+                                        <constraint firstItem="kCb-vr-KU0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cbp-bA-Jvn" secondAttribute="trailing" constant="10" id="DHi-Ts-7WI"/>
+                                        <constraint firstItem="kCb-vr-KU0" firstAttribute="bottom" secondItem="cbp-bA-Jvn" secondAttribute="bottom" id="LUD-rA-iU9"/>
+                                        <constraint firstItem="4oP-LP-tZ4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kCb-vr-KU0" secondAttribute="trailing" constant="10" id="R3i-hA-Pt1"/>
+                                        <constraint firstItem="kCb-vr-KU0" firstAttribute="bottom" secondItem="4oP-LP-tZ4" secondAttribute="bottom" id="RIQ-Uj-Qbe"/>
+                                        <constraint firstAttribute="trailing" secondItem="4oP-LP-tZ4" secondAttribute="trailing" id="YTW-4A-IJb"/>
+                                        <constraint firstItem="oyP-Hp-lh8" firstAttribute="top" secondItem="cbp-bA-Jvn" secondAttribute="bottom" constant="15" id="kUt-5w-i3W"/>
+                                        <constraint firstItem="cbp-bA-Jvn" firstAttribute="leading" secondItem="k7X-fB-AOT" secondAttribute="leading" constant="10" id="l3l-MK-QPZ"/>
+                                        <constraint firstItem="oyP-Hp-lh8" firstAttribute="leading" secondItem="cbp-bA-Jvn" secondAttribute="leading" id="pc6-7V-cmL"/>
+                                        <constraint firstAttribute="centerX" secondItem="kCb-vr-KU0" secondAttribute="centerX" id="pn1-sq-CDn"/>
+                                        <constraint firstItem="4oP-LP-tZ4" firstAttribute="trailing" secondItem="oyP-Hp-lh8" secondAttribute="trailing" id="qNm-2i-2jW"/>
+                                        <constraint firstItem="cbp-bA-Jvn" firstAttribute="top" secondItem="k7X-fB-AOT" secondAttribute="top" constant="10" id="r73-Us-F0M"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="commentCommentLabel" destination="2dv-gG-bO3" id="gOz-ve-Xey"/>
-                                    <outlet property="commentGlobalRateLabel" destination="hXM-Wj-d9b" id="xvd-4c-Awa"/>
-                                    <outlet property="commentIdentityLabel" destination="yJs-o1-1CK" id="0V8-Q5-QQH"/>
-                                    <outlet property="commentSemesterLabel" destination="ed9-xE-AFR" id="Coz-Mp-A3h"/>
-                                    <segue destination="HRO-nx-dYG" kind="push" identifier="uvDetails" id="2mN-dT-Oac"/>
+                                    <outlet property="commentCommentLabel" destination="oyP-Hp-lh8" id="wxK-yc-pk2"/>
+                                    <outlet property="commentGlobalRateLabel" destination="4oP-LP-tZ4" id="Fqr-vV-Rk6"/>
+                                    <outlet property="commentIdentityLabel" destination="kCb-vr-KU0" id="IK8-Kl-eK9"/>
+                                    <outlet property="uvNameLabel" destination="cbp-bA-Jvn" id="3q1-zw-e5c"/>
+                                    <segue destination="HRO-nx-dYG" kind="push" identifier="uvDetails" id="c3C-uh-Qyp"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="JK4-1m-8ft">
@@ -408,7 +412,6 @@
         <!--Navigation Controller - Activité Récente-->
         <scene sceneID="Svl-b3-gq1">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xrH-TG-2QC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eNJ-kb-AuX" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Activité Récente" id="0bF-wN-SnM"/>
                     <toolbarItems/>
@@ -421,6 +424,7 @@
                         <segue destination="Kgc-Ln-C5B" kind="relationship" relationship="rootViewController" id="fIw-qZ-rSu"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xrH-TG-2QC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1346" y="445"/>
         </scene>
@@ -431,6 +435,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="2mN-dT-Oac"/>
+        <segue reference="c3C-uh-Qyp"/>
     </inferredMetricsTieBreakers>
 </document>

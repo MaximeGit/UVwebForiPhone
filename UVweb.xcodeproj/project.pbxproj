@@ -27,6 +27,7 @@
 		C78E1A581854EAF8003B00CE /* UVwebTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C78E1A571854EAF8003B00CE /* UVwebTests.m */; };
 		C78E1A621854EFBA003B00CE /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C78E1A611854EFBA003B00CE /* Storyboard.storyboard */; };
 		C7930E5618C4CC35007870A8 /* UvDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7930E5518C4CC35007870A8 /* UvDetailsViewController.m */; };
+		C798FAB31922B91B0070C442 /* RecentCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C798FAB21922B91B0070C442 /* RecentCommentCell.m */; };
 		C7F5E91F18C0E5E200A0CE01 /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F5E91E18C0E5E200A0CE01 /* UIColor+CustomColors.m */; };
 		C7F6F07318D8BB3200DDDF84 /* UvTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F6F07218D8BB3200DDDF84 /* UvTitleCell.m */; };
 		C7F83DF818969A2000B0A7B0 /* UvsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F83DF718969A2000B0A7B0 /* UvsViewController.m */; };
@@ -75,6 +76,8 @@
 		C78E1A611854EFBA003B00CE /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		C7930E5418C4CC35007870A8 /* UvDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UvDetailsViewController.h; path = ../UvDetailsViewController.h; sourceTree = "<group>"; };
 		C7930E5518C4CC35007870A8 /* UvDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UvDetailsViewController.m; path = ../UvDetailsViewController.m; sourceTree = "<group>"; };
+		C798FAB11922B91B0070C442 /* RecentCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecentCommentCell.h; path = ../RecentCommentCell.h; sourceTree = "<group>"; };
+		C798FAB21922B91B0070C442 /* RecentCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecentCommentCell.m; path = ../RecentCommentCell.m; sourceTree = "<group>"; };
 		C7F5E91D18C0E5E200A0CE01 /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
 		C7F5E91E18C0E5E200A0CE01 /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
 		C7F6F07118D8BB3200DDDF84 /* UvTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UvTitleCell.h; sourceTree = "<group>"; };
@@ -112,6 +115,8 @@
 		C72D12901920CDEC00380CE6 /* PrototypeCells */ = {
 			isa = PBXGroup;
 			children = (
+				C798FAB11922B91B0070C442 /* RecentCommentCell.h */,
+				C798FAB21922B91B0070C442 /* RecentCommentCell.m */,
 				C73B884318D9A1D30074E94D /* UvCommentCell.h */,
 				C73B884418D9A1D30074E94D /* UvCommentCell.m */,
 				C7F6F07118D8BB3200DDDF84 /* UvTitleCell.h */,
@@ -324,6 +329,7 @@
 			files = (
 				C72D12951920D13F00380CE6 /* RecentComment.m in Sources */,
 				C7F83DFB18969B9B00B0A7B0 /* Uv.m in Sources */,
+				C798FAB31922B91B0070C442 /* RecentCommentCell.m in Sources */,
 				C7F83DF818969A2000B0A7B0 /* UvsViewController.m in Sources */,
 				C73B884818D9AF360074E94D /* Comment.m in Sources */,
 				C721248018BE0315000E20A7 /* OrderedDictionary.m in Sources */,

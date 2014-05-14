@@ -47,24 +47,32 @@
     _uvTitleLabel.text = uv.title;
     _uvInfoLabel.text = @"TP : ";
     
-    if(uv.hasTp == YES)
+    if(uv.hasTp == 1)
     {
         _uvInfoLabel.text = [_uvInfoLabel.text stringByAppendingString:@"Oui"];
     }
-    else
+    else if(uv.hasTp == 0)
     {
         _uvInfoLabel.text = [_uvInfoLabel.text stringByAppendingString:@"Non"];
+    }
+    else
+    {
+        _uvInfoLabel.text = [_uvInfoLabel.text stringByAppendingString:@"?"];
     }
     
     _uvInfoLabel.text = [_uvInfoLabel.text stringByAppendingString:@" | Final : "];
 
-    if(uv.hasFinal == YES)
+    if(uv.hasFinal == 1)
     {
         _uvInfoLabel.text = [_uvInfoLabel.text stringByAppendingString:@"Oui"];
     }
-    else
+    else if(uv.hasFinal == 0)
     {
         _uvInfoLabel.text = [_uvInfoLabel.text stringByAppendingString:@"Non"];
+    }
+    else
+    {
+        _uvInfoLabel.text = [_uvInfoLabel.text stringByAppendingString:@"?"];
     }
 }
 

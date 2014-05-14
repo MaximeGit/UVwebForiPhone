@@ -23,7 +23,7 @@
 
 - (NSComparisonResult)compareReverseCommentId:(RecentComment*)otherRecentComment
 {
-    return [otherRecentComment.comment compareReverseCommentId:_comment];
+    return [_comment compareReverseCommentId:otherRecentComment.comment];
 }
 
 @end
