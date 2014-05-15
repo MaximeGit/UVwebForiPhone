@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) UVwebSessionManager *sessionManager;
 @property (strong, nonatomic) UvTitleCell *prototypeTitleCell;
+@property (strong, nonatomic) UvTitleCellWithPolls *prototypeTitleCellWithPolls;
 @property (strong, nonatomic) UvCommentCell *prototypeCommentCell;
 
 @end
@@ -39,11 +40,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+        
     //Refresh control
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.tableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+    
+    if([_uvComments count] == 0)
+    {
+        [_sessionManager uvDetails:_uv forViewController:self];
+    }
+    else
+    {
+        NSLog(@"dsfdsfsdfsdfdsf");
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,6 +79,12 @@
     {
         //First cell : title of the UV
         static NSString *CellIdentifier = @"UvTitle";
+        
+        if([_uv.polls count] > 0)
+        {
+            CellIdentifier = @"UvTitleWithPolls";
+        }
+        
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
         [(UvTitleCell*)cell configureCellWithUv:_uv];
@@ -87,16 +103,21 @@
     return cell;
 }
 
-- (void) prepareWithUv:(Uv*)uv
-{
-    _uv = uv;
-    [_sessionManager uvDetails:uv forViewController:self];
-}
-
 - (UvTitleCell *)prototypeTitleCell
 {
     static NSString *CellIdentifier = @"UvTitle";
-
+    
+    if([_uv.polls count] > 0)
+    {
+        CellIdentifier = @"UvTitleWithPolls";
+        
+        if (!_prototypeTitleCellWithPolls)
+        {
+            _prototypeTitleCellWithPolls = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        }
+        return _prototypeTitleCellWithPolls;
+    }
+    
     if (!_prototypeTitleCell)
     {
         _prototypeTitleCell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];

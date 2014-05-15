@@ -91,7 +91,7 @@
         
         Uv *selectedUv = [[_recentComments objectAtIndex:indexPath.row] uv];
         
-        [destinationController prepareWithUv:selectedUv];
+        destinationController.uv = selectedUv;
     }
 }
 

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Uv.h"
 #import "UVwebSessionManager.h"
-#import "UvTitleCell.h"
+#import "UvTitleCellWithPolls.h"
 #import "UvCommentCell.h"
 
 @interface UvDetailsViewController : UITableViewController
@@ -17,7 +17,6 @@
 @property(strong, nonatomic) Uv *uv;
 @property (strong, nonatomic) NSMutableArray *uvComments;
 
-- (void) prepareWithUv:(Uv*)uv;
 - (void)reloadDataTable;
 
 @end

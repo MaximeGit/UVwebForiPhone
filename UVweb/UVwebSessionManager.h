@@ -14,6 +14,7 @@
 #import "RecentComment.h"
 #import "UvDetailsViewController.h"
 #import "UvsViewController.h"
+#import "Poll.h"
 
 @interface UVwebSessionManager : NSObject
 

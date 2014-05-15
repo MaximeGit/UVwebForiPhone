@@ -142,7 +142,7 @@
                                                             //No error occured
                                                             NSLog(@"Retour: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                                                             
-                                                            NSDictionary *uvBasicDetails = uvDetails[@"details"][@"uv"][0];
+                                                            NSDictionary *uvBasicDetails = uvDetails[@"details"][@"uv"];
                                                             
                                                             //Make sure the TP info exists before using it
                                                             if(![[uvBasicDetails valueForKey:@"tp"] isKindOfClass:[NSNull class]])
@@ -178,6 +178,15 @@
                                                                 
                                                                 [uvComments addObject:newComment];
                                                             }
+                                                            
+                                                            NSMutableArray *arrayPolls = [[NSMutableArray alloc] init];
+                                                            
+                                                            for (NSDictionary *poll in uvDetails[@"details"][@"polls"])
+                                                            {
+                                                                [arrayPolls addObject: [[Poll alloc] initWithJSONData:poll]];
+                                                            }
+                                                            
+                                                            controllerUv.polls = arrayPolls;
                                                             
                                                             //Sorting the comments
                                                             [uvComments sortUsingSelector:@selector(compareReverseCommentId:)];

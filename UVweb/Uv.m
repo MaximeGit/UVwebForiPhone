@@ -18,6 +18,7 @@
         _title = UvJSON[@"title"];
         _globalRate = [NSNumber numberWithDouble:[UvJSON[@"globalRate"] doubleValue]];
         _commentCount = [NSNumber numberWithDouble:[UvJSON[@"commentCount"] doubleValue]];
+        _polls = [[NSMutableArray alloc] init];
     }
 
     return self;
@@ -31,6 +32,7 @@
         _title = title;
         _globalRate = [NSNumber numberWithDouble:0];
         _commentCount = [NSNumber numberWithDouble:0];
+        _polls = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -95,6 +97,11 @@
 - (NSComparisonResult)compareName:(Uv *)otherUv
 {
     return [_name compare:otherUv.name];
+}
+
+-(void)addPoll:(Poll*)poll
+{
+    [_polls addObject:poll];
 }
 
 @end

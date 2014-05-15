@@ -240,6 +240,7 @@
         {
             NSMutableArray *rateUvs = newOrderedUvs[integerRate];
             rateUvs = [rateUvs sortedArrayUsingSelector:@selector(compareReverseGlobalRate:)];
+            [newOrderedUvs setObject:rateUvs forKey:integerRate];
         }
     }
     
@@ -271,7 +272,7 @@
         
         Uv *selectedUv = [[sourceDictionary objectForKey:[sourceDictionary keyAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
         
-        [destinationController prepareWithUv:selectedUv];
+        destinationController.uv = selectedUv;
     }
 }
 

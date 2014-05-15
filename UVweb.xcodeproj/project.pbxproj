@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C71EC8881924D0FD006244C3 /* UvTitleCellWithPolls.m in Sources */ = {isa = PBXBuildFile; fileRef = C71EC8871924D0FD006244C3 /* UvTitleCellWithPolls.m */; };
+		C71EC88B1924EDA9006244C3 /* Poll.m in Sources */ = {isa = PBXBuildFile; fileRef = C71EC88A1924EDA9006244C3 /* Poll.m */; };
 		C721248018BE0315000E20A7 /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C721247F18BE0315000E20A7 /* OrderedDictionary.m */; };
 		C72D128F1920C6AF00380CE6 /* RecentActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C72D128E1920C6AF00380CE6 /* RecentActivityViewController.m */; };
 		C72D12951920D13F00380CE6 /* RecentComment.m in Sources */ = {isa = PBXBuildFile; fileRef = C72D12941920D13F00380CE6 /* RecentComment.m */; };
@@ -45,6 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C71EC8861924D0FD006244C3 /* UvTitleCellWithPolls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UvTitleCellWithPolls.h; sourceTree = "<group>"; };
+		C71EC8871924D0FD006244C3 /* UvTitleCellWithPolls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UvTitleCellWithPolls.m; sourceTree = "<group>"; };
+		C71EC8891924EDA9006244C3 /* Poll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Poll.h; sourceTree = "<group>"; };
+		C71EC88A1924EDA9006244C3 /* Poll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Poll.m; sourceTree = "<group>"; };
 		C721247E18BE0315000E20A7 /* OrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderedDictionary.h; sourceTree = "<group>"; };
 		C721247F18BE0315000E20A7 /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderedDictionary.m; sourceTree = "<group>"; };
 		C72D128D1920C6AF00380CE6 /* RecentActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentActivityViewController.h; sourceTree = "<group>"; };
@@ -121,6 +127,8 @@
 				C73B884418D9A1D30074E94D /* UvCommentCell.m */,
 				C7F6F07118D8BB3200DDDF84 /* UvTitleCell.h */,
 				C7F6F07218D8BB3200DDDF84 /* UvTitleCell.m */,
+				C71EC8861924D0FD006244C3 /* UvTitleCellWithPolls.h */,
+				C71EC8871924D0FD006244C3 /* UvTitleCellWithPolls.m */,
 			);
 			name = PrototypeCells;
 			sourceTree = "<group>";
@@ -136,6 +144,8 @@
 				C7F83DFA18969B9B00B0A7B0 /* Uv.m */,
 				C72D12931920D13F00380CE6 /* RecentComment.h */,
 				C72D12941920D13F00380CE6 /* RecentComment.m */,
+				C71EC8891924EDA9006244C3 /* Poll.h */,
+				C71EC88A1924EDA9006244C3 /* Poll.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -330,10 +340,12 @@
 				C72D12951920D13F00380CE6 /* RecentComment.m in Sources */,
 				C7F83DFB18969B9B00B0A7B0 /* Uv.m in Sources */,
 				C798FAB31922B91B0070C442 /* RecentCommentCell.m in Sources */,
+				C71EC8881924D0FD006244C3 /* UvTitleCellWithPolls.m in Sources */,
 				C7F83DF818969A2000B0A7B0 /* UvsViewController.m in Sources */,
 				C73B884818D9AF360074E94D /* Comment.m in Sources */,
 				C721248018BE0315000E20A7 /* OrderedDictionary.m in Sources */,
 				C7930E5618C4CC35007870A8 /* UvDetailsViewController.m in Sources */,
+				C71EC88B1924EDA9006244C3 /* Poll.m in Sources */,
 				C78E1A431854EAF8003B00CE /* AppDelegate.m in Sources */,
 				C78E1A3F1854EAF8003B00CE /* main.m in Sources */,
 				C72D12971920F58900380CE6 /* UVwebSessionManager.m in Sources */,

@@ -198,7 +198,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UvTitle" rowHeight="93" id="1fx-59-jpX" customClass="UvTitleCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UvTitle" rowHeight="93" id="1fx-59-jpX" customClass="UvTitleCellWithPolls">
                                 <rect key="frame" x="0.0" y="86" width="320" height="93"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1fx-59-jpX" id="Bjd-5k-u6W">
@@ -236,8 +236,60 @@
                                     <outlet property="uvTitleLabel" destination="COz-Np-hfs" id="dAM-Co-38R"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UvTitleWithPolls" rowHeight="96" id="G1Z-pe-hsR" customClass="UvTitleCellWithPolls">
+                                <rect key="frame" x="0.0" y="179" width="320" height="96"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G1Z-pe-hsR" id="upb-mn-ge0">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="wrO-gq-mU2">
+                                            <rect key="frame" x="15" y="10" width="290" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Infos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCr-Ms-Hfv">
+                                            <rect key="frame" x="15" y="70" width="290" height="15"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Réussite" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="2Rl-OB-iOY">
+                                            <rect key="frame" x="15" y="45" width="290" height="15"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="kCr-Ms-Hfv" secondAttribute="bottom" constant="10" id="4Oz-2R-ff4"/>
+                                        <constraint firstItem="2Rl-OB-iOY" firstAttribute="top" secondItem="wrO-gq-mU2" secondAttribute="bottom" constant="10" id="A7P-VJ-Gat"/>
+                                        <constraint firstItem="kCr-Ms-Hfv" firstAttribute="trailing" secondItem="wrO-gq-mU2" secondAttribute="trailing" id="F9J-eN-MGh"/>
+                                        <constraint firstItem="kCr-Ms-Hfv" firstAttribute="leading" secondItem="wrO-gq-mU2" secondAttribute="leading" id="Mch-LB-ou2"/>
+                                        <constraint firstAttribute="trailing" secondItem="wrO-gq-mU2" secondAttribute="trailing" constant="15" id="ODS-Tg-n2M"/>
+                                        <constraint firstItem="wrO-gq-mU2" firstAttribute="leading" secondItem="kCr-Ms-Hfv" secondAttribute="leading" id="Vwz-FL-AlR"/>
+                                        <constraint firstItem="2Rl-OB-iOY" firstAttribute="trailing" secondItem="kCr-Ms-Hfv" secondAttribute="trailing" id="YAo-rc-WvT"/>
+                                        <constraint firstItem="wrO-gq-mU2" firstAttribute="leading" secondItem="upb-mn-ge0" secondAttribute="leading" constant="15" id="aPg-Wv-wpP"/>
+                                        <constraint firstItem="wrO-gq-mU2" firstAttribute="top" secondItem="upb-mn-ge0" secondAttribute="top" constant="10" id="bvV-BC-UYZ"/>
+                                        <constraint firstItem="2Rl-OB-iOY" firstAttribute="trailing" secondItem="wrO-gq-mU2" secondAttribute="trailing" id="cc2-Vc-Oh6"/>
+                                        <constraint firstItem="kCr-Ms-Hfv" firstAttribute="leading" secondItem="2Rl-OB-iOY" secondAttribute="leading" id="gT0-Tg-REk"/>
+                                        <constraint firstItem="kCr-Ms-Hfv" firstAttribute="top" secondItem="2Rl-OB-iOY" secondAttribute="bottom" constant="10" id="xAd-lh-T30"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="UvPollsLabel" destination="2Rl-OB-iOY" id="MWk-Gh-tHC"/>
+                                    <outlet property="uvInfoLabel" destination="kCr-Ms-Hfv" id="LYT-0E-9KZ"/>
+                                    <outlet property="uvPollsLabel" destination="2Rl-OB-iOY" id="deT-Sd-fXQ"/>
+                                    <outlet property="uvTitleLabel" destination="wrO-gq-mU2" id="deY-jq-zqE"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UvComment" rowHeight="70" id="mlo-CR-qoe" customClass="UvCommentCell">
-                                <rect key="frame" x="0.0" y="179" width="320" height="70"/>
+                                <rect key="frame" x="0.0" y="275" width="320" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mlo-CR-qoe" id="Ros-7x-Zeb">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
@@ -435,6 +487,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="c3C-uh-Qyp"/>
+        <segue reference="6R0-Dq-yAr"/>
     </inferredMetricsTieBreakers>
 </document>
