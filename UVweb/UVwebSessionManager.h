@@ -15,14 +15,15 @@
 #import "UvDetailsViewController.h"
 #import "UvsViewController.h"
 #import "Poll.h"
+#import "BranchEnum.h"
 
 @interface UVwebSessionManager : NSObject
 
 @property(nonatomic, strong) NSMutableString *uvwebBaseUrl;
 
-- (void)getAllUvsAndRefreshTable:(UITableViewController*)tableViewController;
 - (void)uvDetails:(Uv*)uv forViewController:(UITableViewController*)tableViewController;
 - (void)recentActivity:(UITableViewController*)recentActivityViewController;
+- (void)uvsOfBranch:(Branch)branch forTableViewController:(UITableViewController*)tableViewController;
 
 + (UVwebSessionManager*) sharedSessionManager;
 

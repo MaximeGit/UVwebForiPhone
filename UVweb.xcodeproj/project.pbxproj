@@ -15,6 +15,7 @@
 		C72D12971920F58900380CE6 /* UVwebSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C72D12961920F58900380CE6 /* UVwebSessionManager.m */; };
 		C73B884518D9A1D30074E94D /* UvCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C73B884418D9A1D30074E94D /* UvCommentCell.m */; };
 		C73B884818D9AF360074E94D /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = C73B884718D9AF360074E94D /* Comment.m */; };
+		C73D2B4C1932952E00A1657D /* BranchEnum.m in Sources */ = {isa = PBXBuildFile; fileRef = C73D2B4B1932952E00A1657D /* BranchEnum.m */; };
 		C78E1A331854EAF8003B00CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78E1A321854EAF8003B00CE /* Foundation.framework */; };
 		C78E1A351854EAF8003B00CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78E1A341854EAF8003B00CE /* CoreGraphics.framework */; };
 		C78E1A371854EAF8003B00CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78E1A361854EAF8003B00CE /* UIKit.framework */; };
@@ -30,6 +31,7 @@
 		C78E1A621854EFBA003B00CE /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C78E1A611854EFBA003B00CE /* Storyboard.storyboard */; };
 		C7930E5618C4CC35007870A8 /* UvDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7930E5518C4CC35007870A8 /* UvDetailsViewController.m */; };
 		C798FAB31922B91B0070C442 /* RecentCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C798FAB21922B91B0070C442 /* RecentCommentCell.m */; };
+		C7F2F6101933630400DD31E5 /* BranchEnum+ArrayReprensentation.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F2F60F1933630400DD31E5 /* BranchEnum+ArrayReprensentation.m */; };
 		C7F5E91F18C0E5E200A0CE01 /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F5E91E18C0E5E200A0CE01 /* UIColor+CustomColors.m */; };
 		C7F6F07318D8BB3200DDDF84 /* UvTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F6F07218D8BB3200DDDF84 /* UvTitleCell.m */; };
 		C7F83DF818969A2000B0A7B0 /* UvsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F83DF718969A2000B0A7B0 /* UvsViewController.m */; };
@@ -63,6 +65,8 @@
 		C73B884418D9A1D30074E94D /* UvCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UvCommentCell.m; sourceTree = "<group>"; };
 		C73B884618D9AF360074E94D /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		C73B884718D9AF360074E94D /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		C73D2B4A1932952E00A1657D /* BranchEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BranchEnum.h; path = ../BranchEnum.h; sourceTree = "<group>"; };
+		C73D2B4B1932952E00A1657D /* BranchEnum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BranchEnum.m; path = ../BranchEnum.m; sourceTree = "<group>"; };
 		C78E1A2F1854EAF8003B00CE /* UVweb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UVweb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78E1A321854EAF8003B00CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C78E1A341854EAF8003B00CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -84,6 +88,8 @@
 		C7930E5518C4CC35007870A8 /* UvDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UvDetailsViewController.m; path = ../UvDetailsViewController.m; sourceTree = "<group>"; };
 		C798FAB11922B91B0070C442 /* RecentCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecentCommentCell.h; path = ../RecentCommentCell.h; sourceTree = "<group>"; };
 		C798FAB21922B91B0070C442 /* RecentCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecentCommentCell.m; path = ../RecentCommentCell.m; sourceTree = "<group>"; };
+		C7F2F60E1933630400DD31E5 /* BranchEnum+ArrayReprensentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BranchEnum+ArrayReprensentation.h"; sourceTree = "<group>"; };
+		C7F2F60F1933630400DD31E5 /* BranchEnum+ArrayReprensentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BranchEnum+ArrayReprensentation.m"; sourceTree = "<group>"; };
 		C7F5E91D18C0E5E200A0CE01 /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
 		C7F5E91E18C0E5E200A0CE01 /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
 		C7F6F07118D8BB3200DDDF84 /* UvTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UvTitleCell.h; sourceTree = "<group>"; };
@@ -136,12 +142,9 @@
 		C72D12911920CEB700380CE6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C7F2F6111933631E00DD31E5 /* Models */,
 				C721247E18BE0315000E20A7 /* OrderedDictionary.h */,
 				C721247F18BE0315000E20A7 /* OrderedDictionary.m */,
-				C73B884618D9AF360074E94D /* Comment.h */,
-				C73B884718D9AF360074E94D /* Comment.m */,
-				C7F83DF918969B9B00B0A7B0 /* Uv.h */,
-				C7F83DFA18969B9B00B0A7B0 /* Uv.m */,
 				C72D12931920D13F00380CE6 /* RecentComment.h */,
 				C72D12941920D13F00380CE6 /* RecentComment.m */,
 				C71EC8891924EDA9006244C3 /* Poll.h */,
@@ -239,6 +242,21 @@
 				C78E1A541854EAF8003B00CE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C7F2F6111933631E00DD31E5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C7F2F60E1933630400DD31E5 /* BranchEnum+ArrayReprensentation.h */,
+				C7F2F60F1933630400DD31E5 /* BranchEnum+ArrayReprensentation.m */,
+				C73D2B4A1932952E00A1657D /* BranchEnum.h */,
+				C73D2B4B1932952E00A1657D /* BranchEnum.m */,
+				C73B884618D9AF360074E94D /* Comment.h */,
+				C73B884718D9AF360074E94D /* Comment.m */,
+				C7F83DF918969B9B00B0A7B0 /* Uv.h */,
+				C7F83DFA18969B9B00B0A7B0 /* Uv.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,7 +361,9 @@
 				C71EC8881924D0FD006244C3 /* UvTitleCellWithPolls.m in Sources */,
 				C7F83DF818969A2000B0A7B0 /* UvsViewController.m in Sources */,
 				C73B884818D9AF360074E94D /* Comment.m in Sources */,
+				C7F2F6101933630400DD31E5 /* BranchEnum+ArrayReprensentation.m in Sources */,
 				C721248018BE0315000E20A7 /* OrderedDictionary.m in Sources */,
+				C73D2B4C1932952E00A1657D /* BranchEnum.m in Sources */,
 				C7930E5618C4CC35007870A8 /* UvDetailsViewController.m in Sources */,
 				C71EC88B1924EDA9006244C3 /* Poll.m in Sources */,
 				C78E1A431854EAF8003B00CE /* AppDelegate.m in Sources */,

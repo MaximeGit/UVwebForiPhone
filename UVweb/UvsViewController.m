@@ -48,13 +48,16 @@
     //Preparing the sort chooser
     [self.sortSegmentedControl addTarget:self action:@selector(didPressSortType:) forControlEvents:UIControlEventValueChanged];
     
+    //By default, all uvs are displayed in alphabetical order
+    _currentBranch = TOUTES;
+    
     //Refresh control
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.tableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
     
     //Getting UVs from web service
-    [_session getAllUvsAndRefreshTable:self];
+    [self refreshTable];
 }
 
 - (void)didReceiveMemoryWarning
@@ -279,7 +282,7 @@
 - (void)refreshTable
 {
     [_orderedUVs removeAllObjects];
-    [_session getAllUvsAndRefreshTable:self];
+    [_session uvsOfBranch:_currentBranch forTableViewController:self];
 }
 
 - (void)reloadDataTable
@@ -293,6 +296,38 @@
     _sortSegmentedControl.selectedSegmentIndex = 0;
     
     [self.tableView reloadData];
+}
+
+//Action sheet to chose a branch (GB, GI...)
+- (IBAction)showBranchActionSheet:(id)sender
+{
+    UIActionSheet *branchActionSheet = [[UIActionSheet alloc] initWithTitle:@"Branche"
+                                                                   delegate:self
+                                                          cancelButtonTitle:nil
+                                                     destructiveButtonTitle:nil
+                                                          otherButtonTitles:nil];
+    
+    NSArray *branchNameArray = [BranchEnum arrayRepresentation];
+    
+    for (NSString* branchName in branchNameArray) {
+        [branchActionSheet addButtonWithTitle:branchName];
+    }
+    
+    [branchActionSheet addButtonWithTitle:@"Annuler"];
+    branchActionSheet.cancelButtonIndex = [branchNameArray count];
+
+    [branchActionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == _currentBranch) {
+        return;
+    }
+    
+    _currentBranch = buttonIndex;
+    [_branchButton setTitle:[BranchEnum stringDefinition:buttonIndex]];
+    [self refreshTable];
 }
 
 @end

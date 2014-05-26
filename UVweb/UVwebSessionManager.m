@@ -38,13 +38,13 @@
     return self;
 }
 
-- (void)getAllUvsAndRefreshTable:(UvsViewController*)tableViewController
+- (void)uvsOfBranch:(Branch)branch forTableViewController:(UvsViewController*)tableViewController
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     OrderedDictionary *uvs = [tableViewController orderedUVs];
     
-    NSURLSessionDataTask *uvsJson = [_session dataTaskWithURL:[NSURL URLWithString:[_uvwebBaseUrl stringByAppendingString:@"uv/app/all"]]
+    NSURLSessionDataTask *uvsJson = [_session dataTaskWithURL:[NSURL URLWithString:[_uvwebBaseUrl stringByAppendingString:[NSString stringWithFormat:@"uv/app/%@", [BranchEnum webServiceName:branch]]]]
                                      
                                             completionHandler:^(NSData *data,
                                                                 NSURLResponse *response,
@@ -100,6 +100,7 @@
     
     [uvsJson resume];
 }
+
 
 - (void)uvDetails:(Uv*)uv forViewController:(UvDetailsViewController*)tableViewController
 {

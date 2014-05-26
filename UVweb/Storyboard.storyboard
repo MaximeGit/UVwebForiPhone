@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="730" y="117"/>
         </scene>
-        <!--Uvs View Controller - UVs-->
+        <!--Uvs View Controller-->
         <scene sceneID="IrI-sd-Loa">
             <objects>
                 <tableViewController id="wg6-fx-knY" customClass="UvsViewController" sceneMemberID="viewController">
@@ -151,18 +151,22 @@
                             <outlet property="delegate" destination="wg6-fx-knY" id="ofn-7M-m0i"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="UVs" id="gB6-I0-nIh">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="hEc-m4-DBK">
-                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="qw3-Zf-fJw">
-                                <rect key="frame" x="16" y="7" width="71" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Nom"/>
-                                    <segment title="Note"/>
-                                </segments>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </segmentedControl>
+                    <navigationItem key="navigationItem" id="gB6-I0-nIh">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Toutes" id="R6R-0Q-V6M">
+                            <connections>
+                                <action selector="showBranchActionSheet:" destination="wg6-fx-knY" id="BO0-Hj-uxc"/>
+                            </connections>
                         </barButtonItem>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="0ao-Gt-cN0">
+                            <rect key="frame" x="91" y="7" width="139" height="31"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Nom"/>
+                                <segment title="Note"/>
+                            </segments>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="lta-Ea-65g">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -171,8 +175,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="branchButton" destination="R6R-0Q-V6M" id="Ync-Uy-cyC"/>
                         <outlet property="searchDisplayController" destination="TEP-d3-ibX" id="nRE-sb-YUP"/>
-                        <outlet property="sortSegmentedControl" destination="qw3-Zf-fJw" id="oCr-5Z-iVe"/>
+                        <outlet property="sortSegmentedControl" destination="0ao-Gt-cN0" id="GkA-1R-Bvk"/>
                         <outlet property="uvSearchBar" destination="G3v-J9-yao" id="SOT-9x-voe"/>
                     </connections>
                 </tableViewController>

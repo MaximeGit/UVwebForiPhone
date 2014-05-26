@@ -46,14 +46,7 @@
     [self.tableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
     
-    if([_uvComments count] == 0)
-    {
-        [_sessionManager uvDetails:_uv forViewController:self];
-    }
-    else
-    {
-        NSLog(@"dsfdsfsdfsdfdsf");
-    }
+    [_sessionManager uvDetails:_uv forViewController:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,7 +77,11 @@
         {
             CellIdentifier = @"UvTitleWithPolls";
         }
-        
+        else
+        {
+            CellIdentifier = @"UvTitle";
+        }
+
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
         [(UvTitleCell*)cell configureCellWithUv:_uv];
@@ -116,6 +113,10 @@
             _prototypeTitleCellWithPolls = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         }
         return _prototypeTitleCellWithPolls;
+    }
+    else
+    {
+        CellIdentifier = @"UvTitle";
     }
     
     if (!_prototypeTitleCell)
