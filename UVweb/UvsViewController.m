@@ -281,7 +281,6 @@
 
 - (void)refreshTable
 {
-    [_orderedUVs removeAllObjects];
     [_session uvsOfBranch:_currentBranch forTableViewController:self];
 }
 
@@ -321,9 +320,12 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == _currentBranch) {
+    if (buttonIndex == _currentBranch || [[BranchEnum arrayRepresentation] count] == buttonIndex) {
         return;
     }
+    
+    //Stop the table scrolling
+    [self.tableView setContentOffset:self.tableView.contentOffset animated:NO];
     
     _currentBranch = buttonIndex;
     [_branchButton setTitle:[BranchEnum stringDefinition:buttonIndex]];

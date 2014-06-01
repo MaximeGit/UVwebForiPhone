@@ -67,6 +67,9 @@
                                                         {
                                                             NSLog(@"Retour: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                                                             
+                                                            //Removing data from model
+                                                            [uvs removeAllObjects];
+                                                            
                                                             for (NSDictionary *groupLetter in uvsFound)
                                                             {
                                                                 [uvs setValue:[[NSMutableArray alloc] init] forKey:(NSString *)groupLetter];
