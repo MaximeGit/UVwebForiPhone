@@ -174,7 +174,6 @@
                                                             controllerUv.title = uvBasicDetails[@"title"];
                                                             controllerUv.globalRate = [NSNumber numberWithDouble:[uvDetails[@"details"][@"averageRate"] doubleValue]];
                                                             
-                                                            tableViewController.title = [NSString stringWithFormat:@"%@ | %@", [controllerUv name], [controllerUv getFormattedGlobalRate]];
                                                             
                                                             for (NSDictionary *comment in uvDetails[@"details"][@"comments"])
                                                             {

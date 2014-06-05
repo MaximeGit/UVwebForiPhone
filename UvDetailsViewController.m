@@ -180,6 +180,7 @@
         [self.refreshControl endRefreshing];
     }
     
+    self.navigationItem.title = [NSString stringWithFormat:@"%@ | %@", [_uv name], [_uv getFormattedGlobalRate]];
     [self.tableView reloadData];
 }
 

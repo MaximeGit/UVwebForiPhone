@@ -470,7 +470,7 @@
         <scene sceneID="Svl-b3-gq1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eNJ-kb-AuX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Activité Récente" image="UVweb-recent-activity-icon" id="0bF-wN-SnM"/>
+                    <tabBarItem key="tabBarItem" title="Activité Récente" image="UVweb-recent-activityicon" id="0bF-wN-SnM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iVD-kA-eM8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -488,7 +488,7 @@
     </scenes>
     <resources>
         <image name="UVweb-list-icon" width="15" height="15"/>
-        <image name="UVweb-recent-activity-icon" width="15" height="15"/>
+        <image name="UVweb-recent-activityicon" width="15" height="15"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -496,6 +496,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="c3C-uh-Qyp"/>
+        <segue reference="6R0-Dq-yAr"/>
     </inferredMetricsTieBreakers>
 </document>
