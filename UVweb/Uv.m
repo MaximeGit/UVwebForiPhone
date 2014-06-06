@@ -55,7 +55,7 @@
     [formatter setMaximumFractionDigits:0];
     [formatter setMinimumFractionDigits:0];
     
-    NSNumber* ceilGlobalRate = [NSNumber numberWithInteger:ceil([_globalRate integerValue])];
+    NSNumber* ceilGlobalRate = [NSNumber numberWithInteger:ceil([_globalRate doubleValue])];
     
     return [formatter stringFromNumber:ceilGlobalRate];
 }

@@ -42,7 +42,7 @@
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    OrderedDictionary *uvs = [tableViewController orderedUVs];
+    OrderedDictionary *uvs = [[OrderedDictionary alloc] init];
     
     NSURLSessionDataTask *uvsJson = [_session dataTaskWithURL:[NSURL URLWithString:[_uvwebBaseUrl stringByAppendingString:[NSString stringWithFormat:@"uv/app/%@", [BranchEnum webServiceName:branch]]]]
                                      
@@ -67,9 +67,6 @@
                                                         {
                                                             NSLog(@"Retour: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                                                             
-                                                            //Removing data from model
-                                                            [uvs removeAllObjects];
-                                                            
                                                             for (NSDictionary *groupLetter in uvsFound)
                                                             {
                                                                 [uvs setValue:[[NSMutableArray alloc] init] forKey:(NSString *)groupLetter];
@@ -88,6 +85,11 @@
                                                             [uvs sortKeysUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
                                                             
                                                             dispatch_async(dispatch_get_main_queue(), ^{
+                                                                
+                                                                //Updating controller's model in main thread
+                                                                [[tableViewController orderedUVs] removeAllObjects];
+                                                                tableViewController.orderedUVs = uvs;
+                                                                
                                                                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                                                                 [tableViewController reloadDataTable];
                                                             });
@@ -107,7 +109,7 @@
 
 - (void)uvDetails:(Uv*)uv forViewController:(UvDetailsViewController*)tableViewController
 {
-    NSMutableArray* uvComments = tableViewController.uvComments;
+    NSMutableArray* uvComments = [[NSMutableArray alloc] init];
     
     //Display the icons that shows we are fecthing data
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
@@ -195,6 +197,11 @@
                                                             [uvComments sortUsingSelector:@selector(compareReverseCommentId:)];
                                                             
                                                             dispatch_async(dispatch_get_main_queue(), ^{
+                                                                
+                                                                //Updating model in main thread
+                                                                [[tableViewController uvComments] removeAllObjects];
+                                                                tableViewController.uvComments = uvComments;
+                                                                
                                                                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                                                                 [tableViewController reloadDataTable];
                                                             });
@@ -212,7 +219,7 @@
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    NSMutableArray* recentComments = recentActivityViewController.recentComments;
+    NSMutableArray* recentComments = [[NSMutableArray alloc] init];
     
     NSURLSessionDataTask *commentsJson = [_session dataTaskWithURL:[NSURL URLWithString:[_uvwebBaseUrl stringByAppendingString:@"app/recentactivity"]]
                                      
@@ -251,6 +258,11 @@
                                                             [recentComments sortUsingSelector:@selector(compareReverseCommentId:)];
                                                             
                                                             dispatch_async(dispatch_get_main_queue(), ^{
+                                                                
+                                                                //Sort model in main thread
+                                                                [[recentActivityViewController recentComments] removeAllObjects];
+                                                                recentActivityViewController.recentComments = recentComments;
+                                                                
                                                                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                                                                 [recentActivityViewController reloadDataTable];
                                                             });

@@ -108,8 +108,6 @@
 
 - (void)refreshTable
 {
-    [_recentComments removeAllObjects];
-    
     [_sessionManager recentActivity:self];
 }
 

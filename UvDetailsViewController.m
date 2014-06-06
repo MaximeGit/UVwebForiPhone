@@ -168,8 +168,6 @@
 
 - (void)refreshTable
 {
-    [_uvComments removeAllObjects];
-    
     [_sessionManager uvDetails:_uv forViewController:self];
 }
 
