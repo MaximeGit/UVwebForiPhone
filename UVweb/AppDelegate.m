@@ -25,8 +25,9 @@
     
     //Color of the system icons - Battery, etc.
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
 
+    [[UITabBar appearance] setTintColor:[UIColor uvwebColor]];
+    
     return YES;
 }
 

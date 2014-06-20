@@ -14,8 +14,6 @@
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="iDR-mX-vlJ" kind="relationship" relationship="viewControllers" id="B7X-dH-mdq"/>
@@ -451,7 +449,9 @@
         <scene sceneID="0e1-yR-xBV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iDR-mX-vlJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Liste UVs" image="UVweb-list-icon" id="L3j-as-Vbs"/>
+                    <tabBarItem key="tabBarItem" title="Liste UVs" image="UVweb-list-icon" id="L3j-as-Vbs">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-4"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hsu-qr-xMI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -470,7 +470,9 @@
         <scene sceneID="Svl-b3-gq1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eNJ-kb-AuX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Activité Récente" image="UVweb-recent-activityicon" id="0bF-wN-SnM"/>
+                    <tabBarItem key="tabBarItem" title="Activité Récente" image="UVweb-recent-activityicon" id="0bF-wN-SnM">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-4"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iVD-kA-eM8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -496,6 +498,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="6R0-Dq-yAr"/>
+        <segue reference="c3C-uh-Qyp"/>
     </inferredMetricsTieBreakers>
 </document>

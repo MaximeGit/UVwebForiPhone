@@ -58,6 +58,8 @@
     
     //Getting UVs from web service
     [self refreshTable];
+    
+    [[UITableView appearance] setTintColor:[UIColor uvwebColor]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -330,6 +332,21 @@
     _currentBranch = buttonIndex;
     [_branchButton setTitle:[BranchEnum stringDefinition:buttonIndex]];
     [self refreshTable];
+}
+
+/**
+ * Green UVweb color for action sheet buttons
+ */
+- (void)willPresentActionSheet:(UIActionSheet *)actionSheet
+{
+    for (UIView *subview in actionSheet.subviews) {
+        if ([subview isKindOfClass:[UIButton class]]) {
+            UIButton *button = (UIButton *)subview;
+            [button setTitleColor:[UIColor uvwebColor] forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor uvwebColor] forState:UIControlStateSelected];
+            [button setTitleColor:[UIColor uvwebColor] forState:UIControlStateHighlighted];
+        }
+    }
 }
 
 @end
