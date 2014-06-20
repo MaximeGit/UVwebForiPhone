@@ -92,6 +92,9 @@
         Uv *selectedUv = [[_recentComments objectAtIndex:indexPath.row] uv];
         
         destinationController.uv = selectedUv;
+        
+        //Setting up back button title
+        self.navigationItem.backBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"Activité" style:UIBarButtonItemStylePlain target:nil action:nil];
     }
 }
 

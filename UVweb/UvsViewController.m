@@ -179,6 +179,23 @@
 }
 
 /*
+ * Function called to translate uisearchbar cancel button in French
+ */
+-(void) searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller {
+    self.searchDisplayController.searchBar.showsCancelButton = YES;
+    
+    UISearchBar *searchBar = self.searchDisplayController.searchBar;
+    UIView *viewTop = searchBar.subviews[0];
+    
+    for (UIView *subView in viewTop.subviews) {
+        if ([subView isKindOfClass:[UIButton class]]) {
+            UIButton *cancelButton = (UIButton*)subView;
+            [cancelButton setTitle:@"Annuler" forState:UIControlStateNormal];
+        }
+    }
+}
+
+/*
  * Triggered when a sort type is selected: have to sort the UVs accordingly
  * selectedSegmentIndex == 0 if user wants sorted by name. selectedSegmentIndex == 1 if user wants sorted by global rate.
  */
@@ -278,6 +295,9 @@
         Uv *selectedUv = [[sourceDictionary objectForKey:[sourceDictionary keyAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
         
         destinationController.uv = selectedUv;
+        
+        //Setting up back button title
+        self.navigationItem.backBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"Liste" style:UIBarButtonItemStylePlain target:nil action:nil];
     }
 }
 
