@@ -115,16 +115,10 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     //URL of the details in the web service
-    NSURL* uvDetailURL = [NSURL URLWithString:[_uvwebBaseUrl stringByAppendingString:@"uv/app/details"]];
+    NSString* uvDetailURLString = [NSString stringWithString:[_uvwebBaseUrl stringByAppendingString:@"uv/app/details/"]];
+    NSURL* uvDetailURL = [NSURL URLWithString:[uvDetailURLString stringByAppendingString:uv.name]];
     
-    //Setting up the POST request
-    NSString *postParameters = [NSString stringWithFormat:@"uvname=%@", [uv name]];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:uvDetailURL];
-    request.HTTPBody = [postParameters dataUsingEncoding:NSUTF8StringEncoding];
-    request.HTTPMethod = @"POST";
-    
-    NSURLSessionDataTask *uvDetailsJson = [_session dataTaskWithRequest:request
+    NSURLSessionDataTask *uvDetailsJson = [_session dataTaskWithURL:uvDetailURL
                                      
                                             completionHandler:^(NSData *data,
                                                                 NSURLResponse *response,
