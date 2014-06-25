@@ -15,6 +15,8 @@
 @property (strong, nonatomic) UvTitleCellWithPolls *prototypeTitleCellWithPolls;
 @property (strong, nonatomic) UvCommentCell *prototypeCommentCell;
 @property (strong, nonatomic) UIAlertView *credentialsAlertView;
+@property (strong, nonatomic) NSString *username;
+@property (strong, nonatomic) NSString *password;
 
 @end
 
@@ -195,7 +197,6 @@
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"%i", buttonIndex);
     switch (buttonIndex) {
         case 0:
             //Removing text in textfields
@@ -219,6 +220,10 @@
 {
     if(allowed)
     {
+        //Keeping username and password for potential comment to send to server
+        _username = [_credentialsAlertView textFieldAtIndex:0].text;
+        _password = [_credentialsAlertView textFieldAtIndex:1].text;
+        
         //Next comment credentials reset
         [[_credentialsAlertView textFieldAtIndex:0] setText:@""];
         [[_credentialsAlertView textFieldAtIndex:1] setText:@""];
@@ -226,7 +231,8 @@
         //Next comment text reset
         _credentialsAlertView.message = @"Entrez vos informations de connexion pour l'appli UVweb.";
 
-        NSLog(@"%@", answer);
+        //User is allowed to write a comment for the UV: new segue for it
+        [self performSegueWithIdentifier:@"writeComment" sender:self];
     }
     else if(httpCode == 200)
     {
@@ -246,9 +252,44 @@
     }
 }
 
+/**
+ * Allows user to send its credentials to server if he entered username and password
+ */
 - (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
 {
     return ([[[alertView textFieldAtIndex:0] text] length]>0 && [[[alertView textFieldAtIndex:1] text] length]>0);    
 }
+
+/**
+ * Prepare for segue (writeComment segue)
+ */
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"writeComment"])
+    {
+        //Segue has to know its delegate(this controller)
+        UINavigationController *navigationController = segue.destinationViewController;
+        AddCommentViewController *addCommentViewController = [navigationController viewControllers][0];
+        
+        addCommentViewController.delegate = self;
+        
+        addCommentViewController.title = [NSString stringWithFormat:@"Avis %@", _uv.name];
+    }
+}
+
+/**
+ * ______________________________________________________________________________________________________
+ * AddCommentViewController delegate methods
+ */
+- (void)addCommentViewControllerDidCancel:(AddCommentViewController*)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)addCommentViewControllerDidSave:(AddCommentViewController*)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

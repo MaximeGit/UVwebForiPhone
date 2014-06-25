@@ -302,8 +302,6 @@
     sessionConfig.timeoutIntervalForRequest = 30.0;
     sessionConfig.timeoutIntervalForResource = 60.0;
     NSURLSession *sess = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
-
-    NSLog(@"%@", credentialsBase64);
     
     NSURLSessionDataTask *userAllowedToCommentJson = [sess dataTaskWithURL:url
                                                       
@@ -325,8 +323,6 @@
                                                                   
                                                                   if (!jsonError)
                                                                   {
-                                                                      NSLog(@"Retour: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-                                                                      
                                                                       //Modifications in the main thread with delegate
                                                                       dispatch_async(dispatch_get_main_queue(), ^{
                                                                           [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -358,8 +354,6 @@
                                                               }
                                                               else
                                                               {
-                                                                  NSLog(@"%i", httpResp.statusCode);
-                                                                  
                                                                   dispatch_async(dispatch_get_main_queue(), ^{
                                                                       [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                                                                       [delegate receivedUserCanCommentUvAnswerFromServer:false textAnser:@"Erreur lors de la tentative de connexion." httpCode:httpResp.statusCode];

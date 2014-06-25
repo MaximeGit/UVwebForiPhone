@@ -13,8 +13,9 @@
 #import "UvCommentCell.h"
 #import "UserAllowedToCommentCompletedProtocol.h"
 #import "UvwebCredentialsAlertView.h"
+#import "AddCommentViewController.h"
 
-@interface UvDetailsViewController : UITableViewController <UIAlertViewDelegate, UserAllowedToCommentCompletedProtocol>
+@interface UvDetailsViewController : UITableViewController <UIAlertViewDelegate, UserAllowedToCommentCompletedProtocol, AddCommentViewControllerDelegate>
 
 @property(strong, nonatomic) Uv *uv;
 @property (strong, nonatomic) NSMutableArray *uvComments;

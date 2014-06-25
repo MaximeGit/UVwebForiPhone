@@ -24,6 +24,36 @@
             </objects>
             <point key="canvasLocation" x="730" y="117"/>
         </scene>
+        <!--Add Comment View Controller-->
+        <scene sceneID="wIA-IS-xam">
+            <objects>
+                <viewController id="2bY-DO-ezN" customClass="AddCommentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aZO-ge-lBS"/>
+                        <viewControllerLayoutGuide type="bottom" id="gXl-gR-mKP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="q9O-XU-VXD" customClass="UITableView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dwe-8i-4fZ">
+                        <barButtonItem key="leftBarButtonItem" title="Annuler" id="Xw5-EQ-bw7">
+                            <connections>
+                                <action selector="cancel:" destination="2bY-DO-ezN" id="3cr-dR-Wrv"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Valider" id="Fn4-4G-9px">
+                            <connections>
+                                <action selector="done:" destination="2bY-DO-ezN" id="aca-Mg-8RS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OuV-S9-4iR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3706" y="164"/>
+        </scene>
         <!--Uvs View Controller-->
         <scene sceneID="IrI-sd-Loa">
             <objects>
@@ -360,6 +390,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addCommentButton" destination="Fle-6q-xSu" id="MXf-Y3-xY3"/>
+                        <segue destination="hvy-vh-EZ6" kind="modal" identifier="writeComment" modalTransitionStyle="coverVertical" id="D4a-H8-dvf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="55o-Zw-3ii" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -496,6 +527,24 @@
             </objects>
             <point key="canvasLocation" x="1346" y="445"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WHx-bA-biN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hvy-vh-EZ6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xbo-H6-Oze">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2bY-DO-ezN" kind="relationship" relationship="rootViewController" id="jcn-t9-sDm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BZe-gm-OZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3180" y="164"/>
+        </scene>
     </scenes>
     <resources>
         <image name="UVweb-list-icon" width="15" height="15"/>
@@ -507,6 +556,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="6R0-Dq-yAr"/>
+        <segue reference="c3C-uh-Qyp"/>
     </inferredMetricsTieBreakers>
 </document>

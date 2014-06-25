@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C71A1518195B205E005429E8 /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C71A1517195B205E005429E8 /* AddCommentViewController.m */; };
 		C71E3A8F195AD4CA00F28019 /* UvwebCredentialsAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C71E3A8E195AD4CA00F28019 /* UvwebCredentialsAlertView.m */; };
 		C71EC8881924D0FD006244C3 /* UvTitleCellWithPolls.m in Sources */ = {isa = PBXBuildFile; fileRef = C71EC8871924D0FD006244C3 /* UvTitleCellWithPolls.m */; };
 		C71EC88B1924EDA9006244C3 /* Poll.m in Sources */ = {isa = PBXBuildFile; fileRef = C71EC88A1924EDA9006244C3 /* Poll.m */; };
@@ -50,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C71A1516195B205E005429E8 /* AddCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentViewController.h; sourceTree = "<group>"; };
+		C71A1517195B205E005429E8 /* AddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentViewController.m; sourceTree = "<group>"; };
 		C71E3A8B195ACCF200F28019 /* UserAllowedToCommentCompletedProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserAllowedToCommentCompletedProtocol.h; sourceTree = "<group>"; };
 		C71E3A8D195AD4CA00F28019 /* UvwebCredentialsAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UvwebCredentialsAlertView.h; sourceTree = "<group>"; };
 		C71E3A8E195AD4CA00F28019 /* UvwebCredentialsAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UvwebCredentialsAlertView.m; sourceTree = "<group>"; };
@@ -183,6 +186,8 @@
 				C72D128E1920C6AF00380CE6 /* RecentActivityViewController.m */,
 				C7F83DF618969A2000B0A7B0 /* UvsViewController.h */,
 				C7F83DF718969A2000B0A7B0 /* UvsViewController.m */,
+				C71A1516195B205E005429E8 /* AddCommentViewController.h */,
+				C71A1517195B205E005429E8 /* AddCommentViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -394,6 +399,7 @@
 				C78E1A3F1854EAF8003B00CE /* main.m in Sources */,
 				C72D12971920F58900380CE6 /* UVwebSessionManager.m in Sources */,
 				C7F5E91F18C0E5E200A0CE01 /* UIColor+CustomColors.m in Sources */,
+				C71A1518195B205E005429E8 /* AddCommentViewController.m in Sources */,
 				C73B884518D9A1D30074E94D /* UvCommentCell.m in Sources */,
 				C72D128F1920C6AF00380CE6 /* RecentActivityViewController.m in Sources */,
 				C7F6F07318D8BB3200DDDF84 /* UvTitleCell.m in Sources */,
