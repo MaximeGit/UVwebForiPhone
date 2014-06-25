@@ -16,6 +16,7 @@
 #import "UvsViewController.h"
 #import "Poll.h"
 #import "BranchEnum.h"
+#import "UserAllowedToCommentCompletedProtocol.h"
 
 @interface UVwebSessionManager : NSObject
 
@@ -24,6 +25,7 @@
 - (void)uvDetails:(Uv*)uv forViewController:(UITableViewController*)tableViewController;
 - (void)recentActivity:(UITableViewController*)recentActivityViewController;
 - (void)uvsOfBranch:(Branch)branch forTableViewController:(UITableViewController*)tableViewController;
+- (void)userAllowedToCommentUv:(Uv*)uv username:(NSString*)username password:(NSString*)password delegate:(id <UserAllowedToCommentCompletedProtocol>)delegate;
 
 + (UVwebSessionManager*) sharedSessionManager;
 

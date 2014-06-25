@@ -14,6 +14,7 @@
 @property (strong, nonatomic) UvTitleCell *prototypeTitleCell;
 @property (strong, nonatomic) UvTitleCellWithPolls *prototypeTitleCellWithPolls;
 @property (strong, nonatomic) UvCommentCell *prototypeCommentCell;
+@property (strong, nonatomic) UIAlertView *credentialsAlertView;
 
 @end
 
@@ -45,6 +46,8 @@
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.tableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+    
+    _credentialsAlertView = [UvwebCredentialsAlertView getUvwebCredentialsAlertView:self message:@"Entrez vos informations de connexion pour l'appli UVweb."];
     
     [_sessionManager uvDetails:_uv forViewController:self];
 }
@@ -180,6 +183,72 @@
     
     self.navigationItem.title = [NSString stringWithFormat:@"%@ | %@", [_uv name], [_uv getFormattedGlobalRate]];
     [self.tableView reloadData];
+}
+
+/**
+ * Action to perform when user clicks on the add comment button
+ */
+- (IBAction)addCommentAction:(id)sender
+{
+    [_credentialsAlertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"%i", buttonIndex);
+    switch (buttonIndex) {
+        case 0:
+            //Removing text in textfields
+            [[alertView textFieldAtIndex:0] setText:@""];
+            [[alertView textFieldAtIndex:1] setText:@""];
+            break;
+            
+        case 1:
+            [_sessionManager userAllowedToCommentUv:_uv
+                                           username:[[alertView textFieldAtIndex:0] text]
+                                           password:[[alertView textFieldAtIndex:1] text]
+                                           delegate:self];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+-(void)receivedUserCanCommentUvAnswerFromServer:(BOOL)allowed textAnser:(NSString*)answer httpCode:(int)httpCode
+{
+    if(allowed)
+    {
+        //Next comment credentials reset
+        [[_credentialsAlertView textFieldAtIndex:0] setText:@""];
+        [[_credentialsAlertView textFieldAtIndex:1] setText:@""];
+        
+        //Next comment text reset
+        _credentialsAlertView.message = @"Entrez vos informations de connexion pour l'appli UVweb.";
+
+        NSLog(@"%@", answer);
+    }
+    else if(httpCode == 200)
+    {
+        UIAlertView *alreadyCommentedUvAlertView = [[UIAlertView alloc] initWithTitle:@"Erreur" message:answer delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alreadyCommentedUvAlertView show];
+    }
+    else
+    {
+        UIAlertView *newCredentialsAlertView = [UvwebCredentialsAlertView getUvwebCredentialsAlertView:self message:answer];
+        
+        [[newCredentialsAlertView textFieldAtIndex:0] setText:[_credentialsAlertView textFieldAtIndex:0].text];
+        [[newCredentialsAlertView textFieldAtIndex:1] setText:[_credentialsAlertView textFieldAtIndex:1].text];
+        
+        _credentialsAlertView = newCredentialsAlertView;
+        
+        [_credentialsAlertView show];
+    }
+}
+
+- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
+{
+    return ([[[alertView textFieldAtIndex:0] text] length]>0 && [[[alertView textFieldAtIndex:1] text] length]>0);    
 }
 
 @end

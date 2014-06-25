@@ -272,6 +272,105 @@
     [commentsJson resume];
 }
 
+/**
+ * Function that sends a request to the server to ask if user exists and has commented or not the UV. Once answer received, delegate is called to user the answer.
+ */
+- (void)userAllowedToCommentUv:(Uv*)uv username:(NSString*)username password:(NSString*)password delegate:(id <UserAllowedToCommentCompletedProtocol>)delegate
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    NSMutableString *urlString = [NSMutableString stringWithString:_uvwebBaseUrl];
+    [urlString appendString:@"uv/app/comment/cancomment/"];
+    [urlString appendString:uv.name];
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSString *credentialsBase64 =[NSString stringWithFormat:@"%@:%@", username, password];
+    credentialsBase64 = [[credentialsBase64 dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:0];
+
+    NSString *authString = [NSString stringWithFormat:@"Basic %@", credentialsBase64];
+    
+    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    sessionConfig.allowsCellularAccess = YES;
+    
+    [sessionConfig setHTTPAdditionalHeaders:@{
+                                              @"Accept": @"application/json",
+                                              @"Authorization": authString,
+                                              }];
+    
+    sessionConfig.timeoutIntervalForRequest = 30.0;
+    sessionConfig.timeoutIntervalForResource = 60.0;
+    NSURLSession *sess = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
+
+    NSLog(@"%@", credentialsBase64);
+    
+    NSURLSessionDataTask *userAllowedToCommentJson = [sess dataTaskWithURL:url
+                                                      
+                                                      completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                          
+                                                          if (!error)
+                                                          {
+                                                              NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
+                                                              
+                                                              //Checking status code
+                                                              if(httpResp.statusCode == 200)
+                                                              {
+                                                                  NSError *jsonError;
+                                                                  
+                                                                  NSDictionary *userAllowed =
+                                                                  [NSJSONSerialization JSONObjectWithData:data
+                                                                                                  options:NSJSONReadingAllowFragments
+                                                                                                    error:&jsonError];
+                                                                  
+                                                                  if (!jsonError)
+                                                                  {
+                                                                      NSLog(@"Retour: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+                                                                      
+                                                                      //Modifications in the main thread with delegate
+                                                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                                                          [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                                                                          
+                                                                          if ([[userAllowed objectForKey:@"alreadyCommented"] boolValue] == false)
+                                                                          {
+                                                                              [delegate receivedUserCanCommentUvAnswerFromServer:true textAnser:@"UV non encore commentée." httpCode:httpResp.statusCode];
+                                                                          }
+                                                                          else
+                                                                          {
+                                                                              [delegate receivedUserCanCommentUvAnswerFromServer:false textAnser:@"UV déjà commentée." httpCode:httpResp.statusCode];
+                                                                          }
+                                                                      });
+                                                                  }
+                                                              }
+                                                              else if(httpResp.statusCode == 401)
+                                                              {
+                                                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                                                      [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                                                                      [delegate receivedUserCanCommentUvAnswerFromServer:false textAnser:@"Aucun utilisateur associé aux informations entrées." httpCode:httpResp.statusCode];
+                                                                  });
+                                                              }
+                                                              else if(httpResp.statusCode == 404)
+                                                              {
+                                                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                                                      [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                                                                      [delegate receivedUserCanCommentUvAnswerFromServer:false textAnser:@"Cette UV n'existe pas ou plus." httpCode:httpResp.statusCode];
+                                                                  });
+                                                              }
+                                                              else
+                                                              {
+                                                                  NSLog(@"%i", httpResp.statusCode);
+                                                                  
+                                                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                                                      [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                                                                      [delegate receivedUserCanCommentUvAnswerFromServer:false textAnser:@"Erreur lors de la tentative de connexion." httpCode:httpResp.statusCode];
+                                                                  });
+                                                              }
+                                                          }
+                                                      }];
+
+    [userAllowedToCommentJson resume];
+}
+
 //Singleton design pattern
 + (UVwebSessionManager*)sharedSessionManager
 {

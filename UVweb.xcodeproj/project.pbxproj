@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C71E3A8F195AD4CA00F28019 /* UvwebCredentialsAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C71E3A8E195AD4CA00F28019 /* UvwebCredentialsAlertView.m */; };
 		C71EC8881924D0FD006244C3 /* UvTitleCellWithPolls.m in Sources */ = {isa = PBXBuildFile; fileRef = C71EC8871924D0FD006244C3 /* UvTitleCellWithPolls.m */; };
 		C71EC88B1924EDA9006244C3 /* Poll.m in Sources */ = {isa = PBXBuildFile; fileRef = C71EC88A1924EDA9006244C3 /* Poll.m */; };
 		C721248018BE0315000E20A7 /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C721247F18BE0315000E20A7 /* OrderedDictionary.m */; };
@@ -49,6 +50,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C71E3A8B195ACCF200F28019 /* UserAllowedToCommentCompletedProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserAllowedToCommentCompletedProtocol.h; sourceTree = "<group>"; };
+		C71E3A8D195AD4CA00F28019 /* UvwebCredentialsAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UvwebCredentialsAlertView.h; sourceTree = "<group>"; };
+		C71E3A8E195AD4CA00F28019 /* UvwebCredentialsAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UvwebCredentialsAlertView.m; sourceTree = "<group>"; };
 		C71EC8861924D0FD006244C3 /* UvTitleCellWithPolls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UvTitleCellWithPolls.h; sourceTree = "<group>"; };
 		C71EC8871924D0FD006244C3 /* UvTitleCellWithPolls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UvTitleCellWithPolls.m; sourceTree = "<group>"; };
 		C71EC8891924EDA9006244C3 /* Poll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Poll.h; sourceTree = "<group>"; };
@@ -124,6 +128,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C71E3A8A195ACCC100F28019 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C71E3A8B195ACCF200F28019 /* UserAllowedToCommentCompletedProtocol.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		C71E3A8C195AD49100F28019 /* UIAlertViews */ = {
+			isa = PBXGroup;
+			children = (
+				C71E3A8D195AD4CA00F28019 /* UvwebCredentialsAlertView.h */,
+				C71E3A8E195AD4CA00F28019 /* UvwebCredentialsAlertView.m */,
+			);
+			name = UIAlertViews;
+			sourceTree = "<group>";
+		};
 		C72D12901920CDEC00380CE6 /* PrototypeCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +221,8 @@
 			isa = PBXGroup;
 			children = (
 				C78E1A611854EFBA003B00CE /* Storyboard.storyboard */,
+				C71E3A8C195AD49100F28019 /* UIAlertViews */,
+				C71E3A8A195ACCC100F28019 /* Protocols */,
 				C72D12921920CF2400380CE6 /* ViewControllers */,
 				C72D12911920CEB700380CE6 /* Classes */,
 				C72D12901920CDEC00380CE6 /* PrototypeCells */,
@@ -357,6 +380,7 @@
 			files = (
 				C72D12951920D13F00380CE6 /* RecentComment.m in Sources */,
 				C7F83DFB18969B9B00B0A7B0 /* Uv.m in Sources */,
+				C71E3A8F195AD4CA00F28019 /* UvwebCredentialsAlertView.m in Sources */,
 				C798FAB31922B91B0070C442 /* RecentCommentCell.m in Sources */,
 				C71EC8881924D0FD006244C3 /* UvTitleCellWithPolls.m in Sources */,
 				C7F83DF818969A2000B0A7B0 /* UvsViewController.m in Sources */,

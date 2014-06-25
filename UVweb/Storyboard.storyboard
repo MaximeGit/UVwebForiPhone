@@ -351,7 +351,16 @@
                             <outlet property="delegate" destination="HRO-nx-dYG" id="o1Q-CO-o0f"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="tbr-2K-PMV"/>
+                    <navigationItem key="navigationItem" id="tbr-2K-PMV">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Fle-6q-xSu">
+                            <connections>
+                                <action selector="addCommentAction:" destination="HRO-nx-dYG" id="iGm-sA-SH6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addCommentButton" destination="Fle-6q-xSu" id="MXf-Y3-xY3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="55o-Zw-3ii" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

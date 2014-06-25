@@ -11,11 +11,18 @@
 #import "UVwebSessionManager.h"
 #import "UvTitleCellWithPolls.h"
 #import "UvCommentCell.h"
+#import "UserAllowedToCommentCompletedProtocol.h"
+#import "UvwebCredentialsAlertView.h"
 
-@interface UvDetailsViewController : UITableViewController
+@interface UvDetailsViewController : UITableViewController <UIAlertViewDelegate, UserAllowedToCommentCompletedProtocol>
 
 @property(strong, nonatomic) Uv *uv;
 @property (strong, nonatomic) NSMutableArray *uvComments;
+
+//Button to add a comment
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addCommentButton;
+
+- (IBAction)addCommentAction:(id)sender;
 
 - (void)reloadDataTable;
 
