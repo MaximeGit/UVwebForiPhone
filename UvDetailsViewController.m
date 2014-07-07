@@ -286,7 +286,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)addCommentViewControllerDidSave:(AddCommentViewController*)controller
+- (void)addCommentViewControllerDidAddComment:(AddCommentViewController*)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

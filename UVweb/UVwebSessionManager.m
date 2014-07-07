@@ -329,11 +329,11 @@
                                                                           
                                                                           if ([[userAllowed objectForKey:@"alreadyCommented"] boolValue] == false)
                                                                           {
-                                                                              [delegate receivedUserCanCommentUvAnswerFromServer:true textAnser:@"UV non encore commentée." httpCode:httpResp.statusCode];
+                                                                              [delegate receivedUserCanCommentUvAnswerFromServer:true textAnser:@"UV non encore commentée." httpCode:(int)httpResp.statusCode];
                                                                           }
                                                                           else
                                                                           {
-                                                                              [delegate receivedUserCanCommentUvAnswerFromServer:false textAnser:@"UV déjà commentée." httpCode:httpResp.statusCode];
+                                                                              [delegate receivedUserCanCommentUvAnswerFromServer:false textAnser:@"UV déjà commentée." httpCode:(int)httpResp.statusCode];
                                                                           }
                                                                       });
                                                                   }
@@ -342,21 +342,21 @@
                                                               {
                                                                   dispatch_async(dispatch_get_main_queue(), ^{
                                                                       [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                                                                      [delegate receivedUserCanCommentUvAnswerFromServer:false textAnser:@"Aucun utilisateur associé aux informations entrées." httpCode:httpResp.statusCode];
+                                                                      [delegate receivedUserCanCommentUvAnswerFromServer:false textAnser:@"Aucun utilisateur associé aux informations entrées." httpCode:(int)httpResp.statusCode];
                                                                   });
                                                               }
                                                               else if(httpResp.statusCode == 404)
                                                               {
                                                                   dispatch_async(dispatch_get_main_queue(), ^{
                                                                       [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                                                                      [delegate receivedUserCanCommentUvAnswerFromServer:false textAnser:@"Cette UV n'existe pas ou plus." httpCode:httpResp.statusCode];
+                                                                      [delegate receivedUserCanCommentUvAnswerFromServer:false textAnser:@"Cette UV n'existe pas ou plus." httpCode:(int)httpResp.statusCode];
                                                                   });
                                                               }
                                                               else
                                                               {
                                                                   dispatch_async(dispatch_get_main_queue(), ^{
                                                                       [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                                                                      [delegate receivedUserCanCommentUvAnswerFromServer:false textAnser:@"Erreur lors de la tentative de connexion." httpCode:httpResp.statusCode];
+                                                                      [delegate receivedUserCanCommentUvAnswerFromServer:false textAnser:@"Erreur lors de la tentative de connexion." httpCode:(int)httpResp.statusCode];
                                                                   });
                                                               }
                                                           }

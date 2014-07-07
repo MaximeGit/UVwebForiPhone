@@ -18,6 +18,7 @@
 		C73B884518D9A1D30074E94D /* UvCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C73B884418D9A1D30074E94D /* UvCommentCell.m */; };
 		C73B884818D9AF360074E94D /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = C73B884718D9AF360074E94D /* Comment.m */; };
 		C73D2B4C1932952E00A1657D /* BranchEnum.m in Sources */ = {isa = PBXBuildFile; fileRef = C73D2B4B1932952E00A1657D /* BranchEnum.m */; };
+		C74538721968197A007E6BAD /* UVwebCommentData.m in Sources */ = {isa = PBXBuildFile; fileRef = C74538711968197A007E6BAD /* UVwebCommentData.m */; };
 		C78E1A331854EAF8003B00CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78E1A321854EAF8003B00CE /* Foundation.framework */; };
 		C78E1A351854EAF8003B00CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78E1A341854EAF8003B00CE /* CoreGraphics.framework */; };
 		C78E1A371854EAF8003B00CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78E1A361854EAF8003B00CE /* UIKit.framework */; };
@@ -74,6 +75,8 @@
 		C73B884718D9AF360074E94D /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		C73D2B4A1932952E00A1657D /* BranchEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BranchEnum.h; path = ../BranchEnum.h; sourceTree = "<group>"; };
 		C73D2B4B1932952E00A1657D /* BranchEnum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BranchEnum.m; path = ../BranchEnum.m; sourceTree = "<group>"; };
+		C74538701968197A007E6BAD /* UVwebCommentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UVwebCommentData.h; sourceTree = "<group>"; };
+		C74538711968197A007E6BAD /* UVwebCommentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UVwebCommentData.m; sourceTree = "<group>"; };
 		C78E1A2F1854EAF8003B00CE /* UVweb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UVweb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78E1A321854EAF8003B00CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C78E1A341854EAF8003B00CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -283,6 +286,8 @@
 				C73B884718D9AF360074E94D /* Comment.m */,
 				C7F83DF918969B9B00B0A7B0 /* Uv.h */,
 				C7F83DFA18969B9B00B0A7B0 /* Uv.m */,
+				C74538701968197A007E6BAD /* UVwebCommentData.h */,
+				C74538711968197A007E6BAD /* UVwebCommentData.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -400,6 +405,7 @@
 				C72D12971920F58900380CE6 /* UVwebSessionManager.m in Sources */,
 				C7F5E91F18C0E5E200A0CE01 /* UIColor+CustomColors.m in Sources */,
 				C71A1518195B205E005429E8 /* AddCommentViewController.m in Sources */,
+				C74538721968197A007E6BAD /* UVwebCommentData.m in Sources */,
 				C73B884518D9A1D30074E94D /* UvCommentCell.m in Sources */,
 				C72D128F1920C6AF00380CE6 /* RecentActivityViewController.m in Sources */,
 				C7F6F07318D8BB3200DDDF84 /* UvTitleCell.m in Sources */,

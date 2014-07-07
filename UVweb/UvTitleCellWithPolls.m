@@ -32,7 +32,7 @@
 {
     [super configureCellWithUv:uv];
     
-    int pollCount = [uv.polls count];
+    int pollCount = (int)[uv.polls count];
     
     if(pollCount == 0)
     {
