@@ -14,7 +14,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+
     }
     return self;
 }
@@ -47,10 +47,32 @@
 
 - (void)configureCellWithComment:(Comment*)comment
 {
+    _commentGlobalRateLabel.clipsToBounds = YES;
+    _commentGlobalRateLabel.layer.cornerRadius = 4.0f;
+    [_commentGlobalRateLabel setTextColor:[UIColor whiteColor]];
+
     _commentCommentLabel.text = [comment comment];
-    _commentGlobalRateLabel.attributedText = [comment attributedGlobalRate];
+    _commentGlobalRateLabel.text = [[comment globalRate] stringValue];
     _commentIdentityLabel.text = [comment identity];
     _commentSemesterLabel.text = [comment semester];
+    
+    if([[comment globalRate] integerValue] < 4)
+    {
+        NSLog(@"red");
+        [_commentGlobalRateLabel setBackgroundColor:[UIColor redColor]];
+    }
+    else if([[comment globalRate] integerValue] > 6)
+    {
+        NSLog(@"uvweb");
+
+        [_commentGlobalRateLabel setBackgroundColor:[UIColor uvwebColor]];
+    }
+    else
+    {
+        NSLog(@"orange");
+
+        [_commentGlobalRateLabel setBackgroundColor:[UIColor orangeColor]];
+    }
 }
 
 @end
