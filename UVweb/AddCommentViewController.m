@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSArray *interestPedagogyLabels;
 @property (nonatomic, strong) NSArray *utilityLabels;
 @property (nonatomic, strong) NSArray *workAmountLabels;
+@property (nonatomic, strong) NSArray *semesters;
 
 @end
 
@@ -31,8 +32,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    [self.tableView setAllowsSelection:NO];
     
     //Disabling possibility to send comment while comment text field is empty
     _validateCommentButton.enabled = NO;
@@ -41,6 +40,8 @@
     _interestPedagogyLabels = [UVwebCommentData interestPedagogyData];
     _utilityLabels = [UVwebCommentData utilityData];
     _workAmountLabels = [UVwebCommentData workAmountData];
+    
+    _semesters = [UVwebCommentData mostRecentSemesters];
     
     //Setting initial label texts for multiple choice UI elements
     [_interestLabel setText:[_interestPedagogyLabels lastObject]];
@@ -58,11 +59,12 @@
     [_utilitySlider addTarget:self action:@selector(sliderValueDidChange:) forControlEvents:UIControlEventValueChanged];
     [_workAmountSlider addTarget:self action:@selector(sliderValueDidChange:) forControlEvents:UIControlEventValueChanged];
     
+    //Listening to text view changes to enable user comment submission if the comment is not empty
+    _commentTextView.delegate = self;
+    
     //Tap gesture recognizer used to dismiss keyboard when user single taps outside a text field
     UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(singleTap:)];
     UITapGestureRecognizer *singleTap2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(singleTap:)];
-    
-    [singleTap1 setCancelsTouchesInView:NO];
     
     [self.tableView addGestureRecognizer:singleTap1];
     [self.navigationController.navigationBar addGestureRecognizer:singleTap2];
@@ -98,7 +100,7 @@
 
 - (IBAction)globalRateTextFieldDidEndEditing:(id)sender
 {
-    if([_globalRateTextField.text isEqualToString:@""])
+    if([_globalRateTextField.text length] == 0)
     {
         _globalRateTextField.text = @"0";
     }
@@ -135,6 +137,22 @@
     }
 }
 
+//Comment TextView delegate's methods
+- (void)textViewDidChange:(UITextView *)textView
+{
+    if (textView == _commentTextView)
+    {
+        if([_commentTextView.text length] != 0)
+        {
+            _validateCommentButton.enabled = YES;
+        }
+        else
+        {
+            _validateCommentButton.enabled = NO;
+        }
+    }
+}
+
 /**
  *___________________________________________________
  * UIAction sheet for semester methods
@@ -142,21 +160,18 @@
 //Action sheet to chose a semester
 - (IBAction)showSemesterActionSheet:(id)sender
 {
-    NSLog(@"Clicked");
     UIActionSheet *semesterActionSheet = [[UIActionSheet alloc] initWithTitle:@"Semestre"
                                                                    delegate:self
                                                           cancelButtonTitle:nil
                                                      destructiveButtonTitle:nil
                                                           otherButtonTitles:nil];
     
-    NSArray *semesterArray = @[@"P14", @"A13", @"P13"];
-    
-    for (NSString* semesterName in semesterArray) {
+    for (NSString* semesterName in _semesters) {
         [semesterActionSheet addButtonWithTitle:semesterName];
     }
     
     [semesterActionSheet addButtonWithTitle:@"Annuler"];
-    semesterActionSheet.cancelButtonIndex = [semesterArray count];
+    semesterActionSheet.cancelButtonIndex = [_semesters count];
     
     [semesterActionSheet showInView:self.view];
 }
@@ -164,7 +179,6 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == actionSheet.cancelButtonIndex) {
-        NSLog(@"Cancelled");
         return;
     }
     
@@ -198,7 +212,7 @@
 
 - (IBAction)done:(id)sender
 {
-    [_delegate addCommentViewControllerDidCancel:self];
+    [_delegate addCommentViewControllerDidAddComment:self];
 }
 
 /**

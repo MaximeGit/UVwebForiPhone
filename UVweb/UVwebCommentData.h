@@ -13,5 +13,6 @@
 +(NSArray*) interestPedagogyData;
 +(NSArray*) utilityData;
 +(NSArray*) workAmountData;
++(NSArray*) mostRecentSemesters;
 
 @end

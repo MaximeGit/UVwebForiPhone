@@ -19,7 +19,7 @@
 
 @end
 
-@interface AddCommentViewController : UITableViewController <UIActionSheetDelegate>
+@interface AddCommentViewController : UITableViewController <UIActionSheetDelegate, UITextViewDelegate>
 
 @property (nonatomic, weak) id<AddCommentViewControllerDelegate> delegate;
 
