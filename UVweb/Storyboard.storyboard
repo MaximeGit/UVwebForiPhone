@@ -403,7 +403,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Envoyer" id="Z7R-dV-Ihv">
                             <connections>
-                                <action selector="done:" destination="7iu-CJ-Aju" id="biS-8r-Ajo"/>
+                                <action selector="sendCommentToServer:" destination="7iu-CJ-Aju" id="qst-sV-7Wh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -26,11 +26,11 @@
 {
     return @[
              @"Inutile",
-             @"Bof",
-             @"Peu intéressant",
-             @"Intéressant",
-             @"Très intéressant",
-             @"Passionnant"
+             @"Très peu utile",
+             @"Pas très utile",
+             @"Utile",
+             @"Très importante",
+             @"Indispensable"
              ];
 }
 

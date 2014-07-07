@@ -274,6 +274,10 @@
         addCommentViewController.delegate = self;
         
         addCommentViewController.title = [NSString stringWithFormat:@"Avis %@", _uv.name];
+        
+        [addCommentViewController setUsername:_username];
+        [addCommentViewController setPassword:_password];
+        [addCommentViewController setUv:_uv];
     }
 }
 

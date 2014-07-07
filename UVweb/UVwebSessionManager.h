@@ -6,6 +6,15 @@
 //  Copyright (c) 2013 UVweb. All rights reserved.
 //
 
+@protocol CommentSentToServerReplyDelegate <NSObject>
+
+@required
+
+- (void)serverDidNotAcceptComment:(int)statusCode answer:(NSString*)answer;
+- (void)serverDidAcceptComment;
+
+@end
+
 #import <Foundation/Foundation.h>
 #import "OrderedDictionary.h"
 #import "Uv.h"
@@ -26,6 +35,9 @@
 - (void)recentActivity:(UITableViewController*)recentActivityViewController;
 - (void)uvsOfBranch:(Branch)branch forTableViewController:(UITableViewController*)tableViewController;
 - (void)userAllowedToCommentUv:(Uv*)uv username:(NSString*)username password:(NSString*)password delegate:(id <UserAllowedToCommentCompletedProtocol>)delegate;
+
+//Comment management
+- (void)sendCommentToServer:(NSDictionary*)newComment username:(NSString*)username password:(NSString*)password uv:(Uv*)uv delegate:(id <CommentSentToServerReplyDelegate>)delegate;
 
 + (UVwebSessionManager*) sharedSessionManager;
 

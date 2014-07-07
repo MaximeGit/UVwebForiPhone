@@ -285,25 +285,9 @@
     
     NSURL *url = [NSURL URLWithString:urlString];
     
-    NSString *credentialsBase64 =[NSString stringWithFormat:@"%@:%@", username, password];
-    credentialsBase64 = [[credentialsBase64 dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:0];
-
-    NSString *authString = [NSString stringWithFormat:@"Basic %@", credentialsBase64];
+    NSURLSession* session = [self sessionWithBasicAuthentication:username password:password];
     
-    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
-    
-    sessionConfig.allowsCellularAccess = YES;
-    
-    [sessionConfig setHTTPAdditionalHeaders:@{
-                                              @"Accept": @"application/json",
-                                              @"Authorization": authString,
-                                              }];
-    
-    sessionConfig.timeoutIntervalForRequest = 30.0;
-    sessionConfig.timeoutIntervalForResource = 60.0;
-    NSURLSession *sess = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
-    
-    NSURLSessionDataTask *userAllowedToCommentJson = [sess dataTaskWithURL:url
+    NSURLSessionDataTask *userAllowedToCommentJson = [session dataTaskWithURL:url
                                                       
                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                           
@@ -363,6 +347,111 @@
                                                       }];
 
     [userAllowedToCommentJson resume];
+}
+
+/**
+ * Function that sends a user comment to UVweb's server
+ */
+- (void)sendCommentToServer:(NSDictionary*)newComment username:(NSString*)username password:(NSString*)password uv:(Uv*)uv delegate:(id <CommentSentToServerReplyDelegate>)delegate
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    //URL to send the comment
+    NSMutableString *urlString = [NSMutableString stringWithString:_uvwebBaseUrl];
+    [urlString appendString:@"uv/app/comment/"];
+    [urlString appendString:uv.name];
+    
+    NSURL* url = [NSURL URLWithString:urlString];
+    
+    //Making session and put request
+    NSURLSession* session = [self sessionWithBasicAuthentication:username password:password];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:60.0];
+    
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    [request setHTTPMethod:@"PUT"];
+
+    //Filling request with comment data in JSON
+    NSError *error;
+    NSData *putCommentData = [NSJSONSerialization dataWithJSONObject:newComment options:0 error:&error];
+    [request setHTTPBody:putCommentData];
+    
+    //Sending request and handling server reply
+    NSURLSessionDataTask *sendComment = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if(!error)
+        {
+            NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
+
+            switch (httpResp.statusCode) {
+                case 200:
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                        [delegate serverDidAcceptComment];
+                    });
+
+                    break;
+                }
+                    
+                case 401:
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                        [delegate serverDidNotAcceptComment:(int) httpResp.statusCode answer:@"Aucun utilisateur associé aux informations entrées."];
+                    });
+                    break;
+                }
+                    
+                case 404:
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                        [delegate serverDidNotAcceptComment:(int)httpResp.statusCode answer:@"Cette UV n'existe pas ou plus."];
+                    });
+                    break;
+                }
+                    
+                default:
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                        [delegate serverDidNotAcceptComment:(int)httpResp.statusCode answer:@"Erreur lors de la tentative d'insertion du commentaire."];
+                    });
+                    
+                    break;
+                }
+            }
+        }
+    }];
+    
+    [sendComment resume];
+}
+
+- (NSURLSession*) sessionWithBasicAuthentication:(NSString*) username password:(NSString*)password
+{
+    NSString *credentialsBase64 =[NSString stringWithFormat:@"%@:%@", username, password];
+    credentialsBase64 = [[credentialsBase64 dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:0];
+    
+    NSString *authString = [NSString stringWithFormat:@"Basic %@", credentialsBase64];
+    
+    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    sessionConfig.allowsCellularAccess = YES;
+    
+    [sessionConfig setHTTPAdditionalHeaders:@{
+                                              @"Accept": @"application/json",
+                                              @"Authorization": authString,
+                                              }];
+    
+    sessionConfig.timeoutIntervalForRequest = 30.0;
+    sessionConfig.timeoutIntervalForResource = 60.0;
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
+
+    return session;
 }
 
 //Singleton design pattern

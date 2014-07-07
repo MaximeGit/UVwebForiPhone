@@ -6,10 +6,6 @@
 //  Copyright (c) 2014 UVweb. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "UvwebCommentData.h"
-#import "UIColor+CustomColors.h"
-
 @class AddCommentViewController;
 
 @protocol AddCommentViewControllerDelegate <NSObject>
@@ -19,9 +15,21 @@
 
 @end
 
-@interface AddCommentViewController : UITableViewController <UIActionSheetDelegate, UITextViewDelegate>
+#import <UIKit/UIKit.h>
+#import "UvwebCommentData.h"
+#import "UIColor+CustomColors.h"
+#import "UVwebSessionManager.h"
+#import "Uv.h"
+
+@interface AddCommentViewController : UITableViewController <UIActionSheetDelegate, UITextViewDelegate, CommentSentToServerReplyDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, weak) id<AddCommentViewControllerDelegate> delegate;
+
+@property (nonatomic, strong) Uv* uv;
+
+//User credentials to send new comment to server
+@property (nonatomic, strong) NSString *password;
+@property (nonatomic, strong) NSString *username;
 
 //______________________________________________
 //UI References

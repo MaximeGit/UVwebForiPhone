@@ -202,6 +202,66 @@
 }
 
 /**
+ *__________________________________________________
+ *
+ */
+- (IBAction)sendCommentToServer:(id)sender
+{
+    //Passed should be lowercased for the server DB
+    NSString *passed = [[_obtainedUvSegmentedControl titleForSegmentAtIndex:[_obtainedUvSegmentedControl selectedSegmentIndex]] lowercaseString];
+    
+    NSDictionary *newComment = @{
+                                 @"comment": _commentTextView.text,
+                                 @"interest": _interestLabel.text,
+                                 @"utility": _utilityLabel.text,
+                                 @"workAmount": _workAmountLabel.text,
+                                 @"pedagogy": _pedagogyLabel.text,
+                                 @"semester": _semesterButton.titleLabel.text,
+                                 @"passed": passed,
+                                 @"globalRate": _globalRateTextField.text
+                                 };
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:newComment
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    
+    if (! jsonData) {
+        NSLog(@"Got an error: %@", error);
+    } else {
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        NSLog(@"%@", jsonString);
+    }
+    
+    //Sending comment to server
+    [[UVwebSessionManager sharedSessionManager] sendCommentToServer:newComment username:_username password:_password uv:_uv delegate:self];
+}
+
+/**
+ *___________________________________________________
+ * Server replies delegate
+ */
+- (void)serverDidNotAcceptComment:(int)statusCode answer:(NSString*)answer
+{
+    UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Erreur" message:answer delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    
+    [errorAlertView show];
+}
+
+- (void) serverDidAcceptComment
+{
+    UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Merci !" message:@"Commentaire ajouté avec succès. Il sera bientôt validé !" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    
+    [errorAlertView show];
+}
+
+//Only called when server validated comment: return
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    [self cancel:self];
+}
+
+/**
  *___________________________________________________
  * Functions handling cancel and done actions
  */
