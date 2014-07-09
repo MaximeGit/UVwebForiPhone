@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 UVweb. All rights reserved.
 //
 
-@protocol CommentSentToServerReplyDelegate <NSObject>
+@protocol CommentSentToServerReplyDelegate <NSObject, NSURLSessionTaskDelegate, NSURLSessionDelegate>
 
 @required
 

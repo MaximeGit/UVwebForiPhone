@@ -205,6 +205,10 @@
             break;
             
         case 1:
+            //Disabling interaction with UI while the server did not reply
+            [self.navigationController.navigationBar setUserInteractionEnabled:NO];
+            [self.tabBarController.tabBar setUserInteractionEnabled:NO];
+            
             [_sessionManager userAllowedToCommentUv:_uv
                                            username:[[alertView textFieldAtIndex:0] text]
                                            password:[[alertView textFieldAtIndex:1] text]
@@ -218,6 +222,10 @@
 
 -(void)receivedUserCanCommentUvAnswerFromServer:(BOOL)allowed textAnser:(NSString*)answer httpCode:(int)httpCode
 {
+    //User can now interact with the UI
+    [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+    [self.tabBarController.tabBar setUserInteractionEnabled:YES];
+    
     if(allowed)
     {
         //Keeping username and password for potential comment to send to server

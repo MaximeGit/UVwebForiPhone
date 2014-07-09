@@ -38,6 +38,14 @@
     return self;
 }
 
+- (void)showServerUnreachableAlertView
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    
+    UIAlertView *alertViewError = [[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur inaccessible." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertViewError show];
+}
+
 - (void)uvsOfBranch:(Branch)branch forTableViewController:(UvsViewController*)tableViewController
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
@@ -100,6 +108,13 @@
                                                         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                                                         [tableViewController reloadDataTable];
                                                     }
+                                                }
+                                                else
+                                                {
+                                                    //Can't reach server or no internet connexion
+                                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                                        [self showServerUnreachableAlertView];
+                                                    });
                                                 }
                                             }];
     
@@ -202,8 +217,13 @@
                                                         }
                                                     }
                                                 }
-                                                //Removing the network indicator after execution if an error occured
-                                                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                                                else
+                                                {
+                                                    //Can't reach server or no internet connexion
+                                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                                        [self showServerUnreachableAlertView];
+                                                    });
+                                                }
                                             }];
     
     [uvDetailsJson resume];
@@ -262,10 +282,13 @@
                                                             });
                                                         }
                                                     }
-                                                    else
-                                                    {
-                                                        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                                                    }
+                                                }
+                                                else
+                                                {
+                                                    //Can't reach server or no internet connexion
+                                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                                        [self showServerUnreachableAlertView];
+                                                    });
                                                 }
                                             }];
     
@@ -343,6 +366,14 @@
                                                                       [delegate receivedUserCanCommentUvAnswerFromServer:false textAnser:@"Erreur lors de la tentative de connexion." httpCode:(int)httpResp.statusCode];
                                                                   });
                                                               }
+                                                          }
+                                                          else
+                                                          {
+                                                              dispatch_async(dispatch_get_main_queue(), ^{
+                                                                  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                                                                  [delegate receivedUserCanCommentUvAnswerFromServer:false textAnser:@"Impossible de contacter le serveur." httpCode:500];
+                                                              });
+
                                                           }
                                                       }];
 
@@ -424,6 +455,13 @@
                     break;
                 }
             }
+        }
+        else
+        {
+            //Can't reach server or no internet connexion
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self showServerUnreachableAlertView];
+            });
         }
     }];
     
