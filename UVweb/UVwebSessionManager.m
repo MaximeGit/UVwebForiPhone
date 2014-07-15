@@ -21,7 +21,7 @@
 {
     if((self = [super init]))
     {
-        _uvwebBaseUrl = [NSMutableString stringWithString:baseUrl];
+        _uvwebBaseUrl = [NSMutableString stringWithString:@"https://assos.utc.fr/uvweb/"];
         
         NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
         
