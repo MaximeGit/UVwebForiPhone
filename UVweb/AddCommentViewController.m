@@ -227,10 +227,10 @@
                                                          error:&error];
     
     if (! jsonData) {
-        NSLog(@"Got an error: %@", error);
+        //NSLog(@"Got an error: %@", error);
     } else {
         NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        NSLog(@"%@", jsonString);
+//        NSLog(@"%@", jsonString);
     }
     
     //Sending comment to server
@@ -284,5 +284,13 @@
     //Dismissing keyboard after single tap.
     [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
 }
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell.reuseIdentifier isEqualToString:@"obtainedCell"] || [cell.reuseIdentifier isEqualToString:@"semesterCell"] || [cell.reuseIdentifier isEqualToString:@"utilityCell"] || [cell.reuseIdentifier isEqualToString:@"interestCell"] || [cell.reuseIdentifier isEqualToString:@"pedagogyCell"] || [cell.reuseIdentifier isEqualToString:@"workAmountCell"]) {
+        cell.backgroundColor = [UIColor uvwebColor];
+    }
+}
+
 
 @end

@@ -63,7 +63,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Suivi de l'UV" id="W4y-UP-SSs">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="70" id="Btr-yc-rey">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="semesterCell" rowHeight="70" id="Btr-yc-rey">
                                         <rect key="frame" x="0.0" y="367" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Btr-yc-rey" id="5H8-UR-Yvt">
@@ -108,7 +108,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.44705882670000002" green="0.73333334920000004" blue="0.66666668650000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="70" id="OJz-h8-mAq">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="obtainedCell" rowHeight="70" id="OJz-h8-mAq">
                                         <rect key="frame" x="0.0" y="437" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OJz-h8-mAq" id="UHK-is-p88">
@@ -151,7 +151,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Notes" id="5xr-8h-xm9">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="90" id="Xxy-PQ-GQj">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="interestCell" rowHeight="90" id="Xxy-PQ-GQj">
                                         <rect key="frame" x="0.0" y="555" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xxy-PQ-GQj" id="dPC-6P-xOQ">
@@ -200,7 +200,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.44705882670000002" green="0.73333334920000004" blue="0.66666668650000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="90" id="WB4-qQ-XqM">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pedagogyCell" rowHeight="90" id="WB4-qQ-XqM">
                                         <rect key="frame" x="0.0" y="645" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WB4-qQ-XqM" id="IJb-ve-yhW">
@@ -249,7 +249,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.44705882670000002" green="0.73333334920000004" blue="0.66666668650000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="90" id="98D-Ma-zHn">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="utilityCell" rowHeight="90" id="98D-Ma-zHn">
                                         <rect key="frame" x="0.0" y="735" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="98D-Ma-zHn" id="gDe-dQ-7Yn">
@@ -298,7 +298,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.44705882670000002" green="0.73333334920000004" blue="0.66666668650000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="90" id="Jdt-9U-tvp">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="workAmountCell" rowHeight="90" id="Jdt-9U-tvp">
                                         <rect key="frame" x="0.0" y="825" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jdt-9U-tvp" id="HnF-S4-2se">
@@ -943,6 +943,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="c3C-uh-Qyp"/>
+        <segue reference="6R0-Dq-yAr"/>
     </inferredMetricsTieBreakers>
 </document>

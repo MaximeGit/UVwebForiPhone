@@ -73,7 +73,7 @@
                                                         
                                                         if (!jsonError)
                                                         {
-                                                            NSLog(@"Retour: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+                                                         //   NSLog(@"Retour: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                                                             
                                                             for (NSDictionary *groupLetter in uvsFound)
                                                             {
@@ -83,7 +83,7 @@
                                                                 for (NSDictionary *uv in groupedUvs)
                                                                 {
                                                                     Uv* newUv = [[Uv alloc] initWithJSONData:uv];
-                                                                    NSLog(@"UV: %@", [newUv name]);
+                                                                //    NSLog(@"UV: %@", [newUv name]);
                                                                     
                                                                     [[uvs objectForKey:groupLetter] addObject:newUv];
                                                                 }
@@ -155,7 +155,7 @@
                                                         if (!jsonError)
                                                         {
                                                             //No error occured
-                                                            NSLog(@"Retour: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+                                                        //    NSLog(@"Retour: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                                                             
                                                             NSDictionary *uvBasicDetails = uvDetails[@"details"][@"uv"];
                                                             
@@ -256,7 +256,7 @@
                                                         
                                                         if (!jsonError)
                                                         {
-                                                            NSLog(@"Retour: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+                                                   //         NSLog(@"Retour: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                                                             
                                                             for (NSDictionary *commentDictionary in commentsFound[@"comments"])
                                                             {

@@ -58,19 +58,14 @@
     
     if([[comment globalRate] integerValue] < 4)
     {
-        NSLog(@"red");
         [_commentGlobalRateLabel setBackgroundColor:[UIColor redColor]];
     }
     else if([[comment globalRate] integerValue] > 6)
     {
-        NSLog(@"uvweb");
-
         [_commentGlobalRateLabel setBackgroundColor:[UIColor uvwebColor]];
     }
     else
     {
-        NSLog(@"orange");
-
         [_commentGlobalRateLabel setBackgroundColor:[UIColor orangeColor]];
     }
 }

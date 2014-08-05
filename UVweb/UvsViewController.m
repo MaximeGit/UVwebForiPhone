@@ -135,6 +135,8 @@
     else
         letterLabel.text = [_orderedUVs keyAtIndex:section];
     
+    headerCell.backgroundColor = [UIColor uvwebColor];
+    
     return headerCell;
 }
 

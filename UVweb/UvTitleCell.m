@@ -43,6 +43,8 @@
 
 - (void) configureCellWithUv:(Uv*)uv
 {
+    self.backgroundColor = [UIColor darkGrayColor];
+    
     _uvTitleLabel.text = uv.title;
     _uvInfoLabel.text = @"TP : ";
     
